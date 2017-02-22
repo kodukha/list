@@ -13,44 +13,86 @@
 <script>
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
-    /*$scope.products2 = ["молоко", "сметана", "масло", "хліб", "сосиски", "твердий сир", "круасани", "йогурт", "печиво", "яблука", "банани","шаріки", "жуйки", "інші фрукти", "спагеті"];*/
+    /*$scope.productsMonthly = ["молоко", "сметана", "масло", "хліб", "сосиски", "твердий сир", "круасани", "йогурт", "печиво", "яблука", "банани","шаріки", "жуйки", "інші фрукти", "спагеті"];*/
     if (typeof(storage) !== "undefined") {
       $scope.products=JSON.parse(localStorage.getItem("items"));
+      $scope.productsWeekly=JSON.parse(localStorage.getItem("itemsWeekly"));
+      $scope.productsMonthly=JSON.parse(localStorage.getItem("itemsMonthly"));
     }
 
-    $scope.addItem = function () {
+    $scope.addItem = function (listType) {
         $scope.errortext = "";
-        if (!$scope.addMe) {return;}        
-        if ($scope.products.indexOf($scope.addMe) == -1) {
-            $scope.products.push($scope.addMe);
-        } else {
-            $scope.errortext = "The item is already in your shopping list."; 
+        if (listType == "d") {     
+          if (!$scope.addMe) {return;}   
+          if ($scope.products.indexOf($scope.addMe) == -1) {
+              $scope.products.push($scope.addMe);
+          } else {
+              $scope.errortext = "The item is already in your shopping list."; 
+          }
+        } else if (listType == "w") {
+          if (!$scope.addMeWeekly) {return;}   
+          if ($scope.productsWeekly.indexOf($scope.addMeWeekly) == -1) {
+              $scope.productsWeekly.push($scope.addMeWeekly);
+          } else {
+              $scope.errortext = "The item is already in your shopping list."; 
+          }   
+        } else if (listType == "m") {
+          if (!$scope.addMeMonthly) {return;}   
+          if ($scope.productsMonthly.indexOf($scope.addMeMonthly) == -1) {
+              $scope.productsMonthly.push($scope.addMeMonthly);
+          } else {
+              $scope.errortext = "The item is already in your shopping list."; 
+          }   
         }
     }
-    $scope.removeItem = function (x) {
-        $scope.errortext = "";    
-        $scope.products.splice(x, 1);
+    $scope.removeItem = function (x,listType) {
+        $scope.errortext = "";   
+        if (listType=='d') {
+          $scope.products.splice(x, 1);
+        } else if (listType=='w'){
+          $scope.productsWeekly.splice(x, 1);
+        } else if (listType=='m'){
+          $scope.productsMonthly.splice(x, 1);
+        }
     }
     $scope.saveItems = function() {
       if (typeof(storage) !== "undefined") {
         localStorage.setItem("items", JSON.stringify($scope.products));
+        localStorage.setItem("itemsWeekly", JSON.stringify($scope.productsWeekly));
+        localStorage.setItem("itemsMonthly", JSON.stringify($scope.productsMonthly));
       }
     }
 });
 </script>
 <div class="container-fluid">
-  <div ng-app="myShoppingList" ng-controller="myCtrl">
-    <div>
-      <h1>Items to buy:</h1>
+  <div class="row" ng-app="myShoppingList" ng-controller="myCtrl">
+    <div class="col-sm-4">
+      <h1>Items check daily:</h1>
         <ul>
-          <li ng-repeat="x in products">{{x}} <button ng-click="removeItem($index)" class="btn btn-xs btn-primary"> Х </span></li>
+          <li ng-repeat="x in products">{{x}} <button ng-click="removeItem($index, 'd')" class="btn btn-xs btn-primary"> Х </span></li>
         </ul>
+        <input ng-model="addMe">
+        <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
     </div>
-    <input ng-model="addMe">
-    <button ng-click="addItem()" class="btn  btn-primary">Add</button>
-    <p>{{errortext}}</p>
-  <p>Try to add the same item twice, and you will get an error message.</p>
-  <button ng-click="saveItems()" class="btn btn-primary">Save list in storage</button>
+    <div class="col-sm-4">
+      <h1>Items to check weekly:</h1>
+        <ul>
+          <li ng-repeat="x in productsWeekly">{{x}} <button ng-click="removeItem($index, 'w')" class="btn btn-xs btn-primary"> Х </span></li>
+        </ul>
+        <input ng-model="addMeWeekly">
+        <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
+    </div>
+    <div class="col-sm-4">
+      <h1>Items to check monthly:</h1>
+        <ul>
+          <li ng-repeat="x in productsMonthly">{{x}} <button ng-click="removeItem($index, 'm')" class="btn btn-xs btn-primary"> Х </span></li>
+        </ul>
+        <input ng-model="addMeMonthly">
+        <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
+    </div>
+    <div>{{errortext}}</div>
+  <div>Try to add the same item twice, and you will get an error message.</div>
+  <button ng-click="saveItems()" class="btn btn-primary">Save lists in storage</button>
   </div>
 </div>
 <script>
