@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mystyles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -95,32 +96,34 @@ app.controller("myCtrl", function($scope) {
 </script>
 <div class="container-fluid">
   <div class="row" ng-app="myShoppingList" ng-controller="myCtrl">
-    <div class="col-sm-3">
-      <h1>Items check daily:</h1>
+    <img src="flower.jpg"/>
+    <h1>Items to check</h1>
+    <div class="col-sm-3 daily">
+      <h2>daily:</h2>
         <ul>
           <li ng-repeat="x in products">{{x}} <button ng-click="removeItem($index, 'd')" class="btn btn-xs btn-primary"> Х </span></li>
         </ul>
         <input ng-model="addMe">
         <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3">
-      <h1>Items to check weekly:</h1>
+    <div class="col-sm-3 weekly">
+      <h2>weekly:</h2>
         <ul>
           <li ng-repeat="x in productsWeekly">{{x}} <button ng-click="removeItem($index, 'w')" class="btn btn-xs btn-primary"> Х </span></li>
         </ul>
         <input ng-model="addMeWeekly">
         <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3">
-      <h1>Items to check monthly:</h1>
+    <div class="col-sm-3 monthly">
+      <h2>monthly:</h2>
         <ul>
           <li ng-repeat="x in productsMonthly">{{x}} <button ng-click="removeItem($index, 'm')" class="btn btn-xs btn-primary"> Х </span></li>
         </ul>
         <input ng-model="addMeMonthly">
         <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3">
-      <h1>Items to check on occasion:</h1>
+    <div class="col-sm-3 irregular">
+      <h2>on occasion:</h2>
         <ul>
           <li ng-repeat="x in productsIrregular">{{x}} <button ng-click="removeItem($index, 'i')" class="btn btn-xs btn-primary"> Х </span></li>
         </ul>
