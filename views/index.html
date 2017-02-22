@@ -9,33 +9,53 @@
 <script>
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
-    $scope.products = ["хліб", "молоко", "сметана", "сосики", "твердий сир", "масло", "круасани", "банани"];
+    $scope.products = ["молоко", "сметана", "масло", "хліб", "сосиски", "твердий сир", "круасани", "йогурт", "печиво", "яблука", "банани","шаріки", "жуйки", "інші фрукти", "спагеті"];
+    if (typeof(storage) !== "undefined") {
+      $scope.productsFromStorage=JSON.parse(localStorage.getItem("items"));
+    }
+
     $scope.addItem = function () {
         $scope.errortext = "";
         if (!$scope.addMe) {return;}        
         if ($scope.products.indexOf($scope.addMe) == -1) {
             $scope.products.push($scope.addMe);
         } else {
-            $scope.errortext = "The item is already in your shopping list.";
+            $scope.errortext = "The item is already in your shopping list."; 
         }
     }
     $scope.removeItem = function (x) {
         $scope.errortext = "";    
         $scope.products.splice(x, 1);
     }
+    $scope.saveItems = function() {
+      if (typeof(storage) !== "undefined") {
+        localStorage.setItem("items", JSON.stringify($scope.products));
+      }
+    }
 });
 </script>
 
 <div ng-app="myShoppingList" ng-controller="myCtrl">
+  <div id="storageInfo">storage Info </div>
+  <div>Items to buy: </div>
   <ul>
-    <li ng-repeat="x in products">{{x}}<span ng-click="removeItem($index)">×</span></li>
+    <li ng-repeat="x in products">{{x}} <span ng-click="removeItem($index)">Х</span></li>
+  </ul>
+  <div>Items from storage: </div>
+  <div id="fromStorage"></div>
+  <ul>
+    <li ng-repeat="x in productsFromStorage">{{x}} <span ng-click="removeItem($index)">Х</span></li>
   </ul>
   <input ng-model="addMe">
   <button ng-click="addItem()">Add</button>
   <p>{{errortext}}</p>
+<p>Try to add the same item twice, and you will get an error message.</p>
+<button ng-click="saveItems()">Save list in storage</button>
 </div>
 
-<p>Try to add the same item twice, and you will get an error message.</p>
+<script>
+  var storage = window.localStorage;
+</script>
 
 </body>
 </html>
