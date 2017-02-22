@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
-
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
 
 <script>
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
-    $scope.products = ["молоко", "сметана", "масло", "хліб", "сосиски", "твердий сир", "круасани", "йогурт", "печиво", "яблука", "банани","шаріки", "жуйки", "інші фрукти", "спагеті"];
+    /*$scope.products2 = ["молоко", "сметана", "масло", "хліб", "сосиски", "твердий сир", "круасани", "йогурт", "печиво", "яблука", "банани","шаріки", "жуйки", "інші фрукти", "спагеті"];*/
     if (typeof(storage) !== "undefined") {
-      $scope.productsFromStorage=JSON.parse(localStorage.getItem("items"));
+      $scope.products=JSON.parse(localStorage.getItem("items"));
     }
 
     $scope.addItem = function () {
@@ -34,25 +38,21 @@ app.controller("myCtrl", function($scope) {
     }
 });
 </script>
-
-<div ng-app="myShoppingList" ng-controller="myCtrl">
-  <div id="storageInfo">storage Info </div>
-  <div>Items to buy: </div>
-  <ul>
-    <li ng-repeat="x in products">{{x}} <span ng-click="removeItem($index)">Х</span></li>
-  </ul>
-  <div>Items from storage: </div>
-  <div id="fromStorage"></div>
-  <ul>
-    <li ng-repeat="x in productsFromStorage">{{x}} <span ng-click="removeItem($index)">Х</span></li>
-  </ul>
-  <input ng-model="addMe">
-  <button ng-click="addItem()">Add</button>
-  <p>{{errortext}}</p>
-<p>Try to add the same item twice, and you will get an error message.</p>
-<button ng-click="saveItems()">Save list in storage</button>
+<div class="container-fluid">
+  <div ng-app="myShoppingList" ng-controller="myCtrl">
+    <div>
+      <h1>Items to buy:</h1>
+        <ul>
+          <li ng-repeat="x in products">{{x}} <button ng-click="removeItem($index)" class="btn btn-xs btn-primary"> Х </span></li>
+        </ul>
+    </div>
+    <input ng-model="addMe">
+    <button ng-click="addItem()" class="btn  btn-primary">Add</button>
+    <p>{{errortext}}</p>
+  <p>Try to add the same item twice, and you will get an error message.</p>
+  <button ng-click="saveItems()" class="btn btn-primary">Save list in storage</button>
+  </div>
 </div>
-
 <script>
   var storage = window.localStorage;
 </script>
