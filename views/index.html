@@ -92,13 +92,53 @@ app.controller("myCtrl", function($scope) {
         localStorage.setItem("itemsIrregular", JSON.stringify($scope.productsIrregular));
       }
     }
+    $scope.show = function(listType) {
+            document.getElementById("dailyList").style.visibility="hidden";
+            document.getElementById("weeklyList").style.visibility="hidden";
+            document.getElementById("monthlyList").style.visibility="hidden";
+            document.getElementById("irregularList").style.visibility="hidden";
+        switch (listType){
+          case 'd': {
+            document.getElementById("dailyList").style.visibility="visible";
+            break;
+          }
+          case 'w': {
+            document.getElementById("weeklyList").style.visibility="visible";
+            break;
+          }
+          case 'm': {
+            document.getElementById("monthlyList").style.visibility="visible";
+            break;
+          }
+          case 'i': {
+            document.getElementById("irregularList").style.visibility="visible";
+            break;
+          }
+          case 'a': {
+            document.getElementById("dailyList").style.visibility="visible";
+            document.getElementById("weeklyList").style.visibility="visible";
+            document.getElementById("monthlyList").style.visibility="visible";
+            document.getElementById("irregularList").style.visibility="visible";
+            break;
+          }
+        }  
+    }
 });
 </script>
 <div class="container-fluid">
   <div class="row" ng-app="myShoppingList" ng-controller="myCtrl">
-    <img src="flower.jpg"/>
-    <h1>Items to check</h1>
-    <div class="col-sm-3 daily">
+    <img class="icon" src="flower.jpg" height="75px"/><h1>Items to check:</h1>
+    <nav>
+      <ul>
+        <li><a href="" ng-click="show('a')">all</a></li>
+        <li><a href="" ng-click="show('d')">daily</a></li>
+        <li><a href="" ng-click="show('w')">weekly</a></li>
+        <li><a href="" ng-click="show('m')">mothly</a></li>
+        <li><a href="" ng-click="show('i')">on occasion</a></li>
+      </ul>
+    </nav>
+    
+    <div class="col-sm-3 daily" id="dailyList">
       <h2>daily:</h2>
         <ul>
           <li ng-repeat="x in products">{{x}} <button ng-click="removeItem($index, 'd')" class="btn btn-xs btn-primary"> Х </span></li>
@@ -106,7 +146,7 @@ app.controller("myCtrl", function($scope) {
         <input ng-model="addMe">
         <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3 weekly">
+    <div class="col-sm-3 weekly" id="weeklyList">
       <h2>weekly:</h2>
         <ul>
           <li ng-repeat="x in productsWeekly">{{x}} <button ng-click="removeItem($index, 'w')" class="btn btn-xs btn-primary"> Х </span></li>
@@ -114,7 +154,7 @@ app.controller("myCtrl", function($scope) {
         <input ng-model="addMeWeekly">
         <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3 monthly">
+    <div class="col-sm-3 monthly" id="monthlyList">
       <h2>monthly:</h2>
         <ul>
           <li ng-repeat="x in productsMonthly">{{x}} <button ng-click="removeItem($index, 'm')" class="btn btn-xs btn-primary"> Х </span></li>
@@ -122,7 +162,7 @@ app.controller("myCtrl", function($scope) {
         <input ng-model="addMeMonthly">
         <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3 irregular">
+    <div class="col-sm-3 irregular" id="irregularList">
       <h2>on occasion:</h2>
         <ul>
           <li ng-repeat="x in productsIrregular">{{x}} <button ng-click="removeItem($index, 'i')" class="btn btn-xs btn-primary"> Х </span></li>

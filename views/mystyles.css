@@ -1,2 +1,30 @@
 .daily, .monthly {background-color: #cff4ff;}
 .weekly, .irregular {background-color: #f6fb64;}
+
+nav{margin-top: 10px; margin-bottom: 10px;}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #cff4ff;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #f6fb64;
+}
+.icon {display: inline; padding: 10px;}
+h1 {display: inline-block; vertical-align: middle;}
