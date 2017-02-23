@@ -14,7 +14,7 @@
 <body>
 <div class="container-fluid">
   <div class="row" ng-app="myShoppingList" ng-controller="myCtrl">
-    <img class="icon" src="flower.jpg" height="75px"/><h1>Items to check:</h1>
+    <img class="icon" src="flower.jpg" height="75px"/><h1>Step 1: Create or update your own shopping lists</h1>
     <nav>
       <ul>
         <li><a href="" ng-click="show('a')">all</a></li>
@@ -60,7 +60,8 @@
     <div class="footer">
       <div>{{errortext}}</div>
       <div id="errorTextMessage">Try to add the same item twice, and you will get an error message.</div>
-      <button ng-click="saveItems()" id="saveItemsBtn" class="btn btn-primary saveItemsBtn">Save lists in storage</button>
+      <button ng-click="goToStep2()" class="btn btn-primary goToStep2Btn">Go to step 2</button>
+      <button ng-click="saveItems()" class="btn btn-primary saveItemsBtn">Save lists in storage</button>
     </div>
   </div> <!-- end app -->
 </div>

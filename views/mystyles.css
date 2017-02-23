@@ -26,5 +26,5 @@ nav li a:hover {
 .icon {display: inline; padding: 10px;}
 h1 {display: inline-block; vertical-align: middle;}
 #errorTextMessage {display: inline-block; width: 50%; height: 45px; vertical-align: middle;}
-#saveItemsBtn {display: inline; float: right;}
+.saveItemsBtn, .goToStep2Btn {display: inline; float: right; margin-left: 10px;}
 .footer {clear: both; padding-top: 20px; background-color: #cff4ff;}
