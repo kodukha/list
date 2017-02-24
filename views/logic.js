@@ -1,6 +1,6 @@
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
-   // $scope.productsIrregular = ["сіль", "сода", "оцет", "приправа до курки", "лавровий лист", "кориця", "розпушувач", "ваніль", "загущувач", "желе", "чорнослив", "курага", "мак", "пшениця", "засіб до вікон", "засіб до туалету", "бритви", "засіб для гоління", "швабра"];
+    $scope.productsShopping = [];
     if (typeof(storage) !== "undefined") {
       $scope.productsDaily=JSON.parse(localStorage.getItem("items"));
       $scope.productsWeekly=JSON.parse(localStorage.getItem("itemsWeekly"));
@@ -12,11 +12,11 @@ app.controller("myCtrl", function($scope) {
         $scope.errortext = "";
         switch (listType) {
           case 'd':{     
-            if (!$scope.addMe) {return;}   
-            if ($scope.productsDaily.indexOf($scope.addMe) == -1) {
-                $scope.productsDaily.push($scope.addMe);
+            if (!$scope.addMeDaily) {return;}   
+            if ($scope.productsDaily.indexOf($scope.addMeDaily) == -1) {
+                $scope.productsDaily.push($scope.addMeDaily);
             } else {
-                $scope.errortext = "The item is already in your daily shopping list."; 
+                $scope.errortext = "The item is already in your daily shopping template list."; 
             }
             break;
           }
@@ -25,7 +25,7 @@ app.controller("myCtrl", function($scope) {
             if ($scope.productsWeekly.indexOf($scope.addMeWeekly) == -1) {
                 $scope.productsWeekly.push($scope.addMeWeekly);
             } else {
-                $scope.errortext = "The item is already in your weekly shopping list."; 
+                $scope.errortext = "The item is already in your weekly shopping template list."; 
             }
             break;
           }
@@ -34,7 +34,7 @@ app.controller("myCtrl", function($scope) {
             if ($scope.productsMonthly.indexOf($scope.addMeMonthly) == -1) {
                 $scope.productsMonthly.push($scope.addMeMonthly);
             } else {
-                $scope.errortext = "The item is already in your monthly shopping list."; 
+                $scope.errortext = "The item is already in your monthly shopping template list."; 
             }
             break;
           }
@@ -43,17 +43,26 @@ app.controller("myCtrl", function($scope) {
             if ($scope.productsIrregular.indexOf($scope.addMeIrregular) == -1) {
                 $scope.productsIrregular.push($scope.addMeIrregular);
             } else {
-                $scope.errortext = "The item is already in your irregular shopping list."; 
+                $scope.errortext = "The item is already in your irregular shopping template list."; 
             } 
             break; 
-          } 
+          }
+          case 's': {
+            if (!$scope.addMeShopping) {return;}   
+            if ($scope.productsShopping.indexOf($scope.addMeShopping) == -1) {
+                $scope.productsShopping.push($scope.addMeShopping);
+            } else {
+                $scope.errortext = "The item is already in your shopping list."; 
+            } 
+            break; 
+          }  
         }  // end switch
     }
     $scope.removeItem = function (x,listType) {
         $scope.errortext = ""; 
         switch (listType){
           case 'd': {
-            $scope.products.splice(x, 1);
+            $scope.productsDaily.splice(x, 1);
             break;
           }
           case 'w': {
@@ -70,9 +79,34 @@ app.controller("myCtrl", function($scope) {
           }
         }  
     }
+    $scope.moveItem = function (x,listTypeFrom, listTypeTo) {
+        if (listTypeTo == "s") {
+          $scope.errortext = ""; 
+          switch (listTypeFrom){
+            case 'd': {
+              $scope.addMeShopping = $scope.productsDaily[x];
+              break;
+            }
+            case 'w': {
+              $scope.addMeShopping = $scope.productsWeekly[x];
+              break;
+            }
+            case 'm': {
+              $scope.addMeShopping = $scope.productsMonthly[x];
+              break;
+            }
+            case 'i': {
+              $scope.addMeShopping = $scope.productsIrregular[x];
+              break;
+            }
+          }           
+          this.removeItem(x, listTypeFrom);          
+          this.addItem ('s');  
+        }
+    }
     $scope.saveItems = function() {
       if (typeof(storage) !== "undefined") {
-        localStorage.setItem("items", JSON.stringify($scope.products));
+        localStorage.setItem("itemsDaily", JSON.stringify($scope.productsDaily));
         localStorage.setItem("itemsWeekly", JSON.stringify($scope.productsWeekly));
         localStorage.setItem("itemsMonthly", JSON.stringify($scope.productsMonthly));
         localStorage.setItem("itemsIrregular", JSON.stringify($scope.productsIrregular));

@@ -25,8 +25,8 @@
       </ul>
     </nav>
     
-    <div class="col-sm-3 daily" id="dailyList">
-      <h3>daily:</h3>
+    <div class="col-sm-2 daily" id="dailyList">
+      <h3>daily template:</h3>
         <table>
           <tr ng-repeat="x in productsDaily">
             <td>
@@ -38,11 +38,11 @@
             </td>
           </tr>
         </table>
-        <input ng-model="addMe">
+        <input ng-model="addMeDaily">
         <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3 weekly" id="weeklyList">
-      <h3>weekly:</h3>
+    <div class="col-sm-2 weekly" id="weeklyList">
+      <h3>weekly template:</h3>
         <table>
           <tr ng-repeat="x in productsWeekly">
             <td>
@@ -57,8 +57,8 @@
         <input ng-model="addMeWeekly">
         <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3 monthly" id="monthlyList">
-      <h3>monthly:</h3>
+    <div class="col-sm-2 monthly" id="monthlyList">
+      <h3>monthly template:</h3>
         <table>
           <tr ng-repeat="x in productsMonthly">
             <td>
@@ -73,8 +73,8 @@
         <input ng-model="addMeMonthly">
         <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-3 irregular" id="irregularList">
-      <h3>on occasion:</h3>
+    <div class="col-sm-2 irregular" id="irregularList">
+      <h3>on occasion template:</h3>
         <table>
           <tr ng-repeat="x in productsIrregular">
             <td>
@@ -88,6 +88,21 @@
         </table>
         <input ng-model="addMeIrregular">
         <button ng-click="addItem('i')" class="btn  btn-primary">Add</button>
+    </div>
+    <div class="col-sm-2 shopping" id="shoppingList">
+      <h3>shopping list:</h3>
+        <table>
+          <tr ng-repeat="x in productsShopping">
+            <td>
+              <div class="item">{{x}} </div>
+            </td>
+            <td>
+              <button ng-click="removeItem($index, 's')" class="btn btn-xs btn-primary"> Х </button>
+            </td>
+          </tr>
+        </table>
+        <input ng-model="addMeShopping">
+        <button ng-click="addItem('s')" class="btn  btn-primary">Add</button>
     </div>
     <div class="footer">
       <div>{{errortext}}</div>
