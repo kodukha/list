@@ -28,3 +28,8 @@ h1 {display: inline-block; vertical-align: middle;}
 #errorTextMessage {display: inline-block; width: 50%; height: 45px; vertical-align: middle;}
 .saveItemsBtn, .goToStep2Btn {display: inline; float: right; margin-left: 10px;}
 .footer {clear: both; padding-top: 20px; background-color: #cff4ff;}
+#monthlyList tr:hover {background-color: #cff4ff;}
+#weeklyList tr:hover {background-color: #cff4ff;}
+#dailyList tr:hover {background-color: #cff4ff;}
+#irregularList tr:hover {background-color: #cff4ff;}
+.item {padding-right: 10px;}

@@ -2,7 +2,7 @@ var app = angular.module("myShoppingList", []);
 app.controller("myCtrl", function($scope) {
    // $scope.productsIrregular = ["сіль", "сода", "оцет", "приправа до курки", "лавровий лист", "кориця", "розпушувач", "ваніль", "загущувач", "желе", "чорнослив", "курага", "мак", "пшениця", "засіб до вікон", "засіб до туалету", "бритви", "засіб для гоління", "швабра"];
     if (typeof(storage) !== "undefined") {
-      $scope.products=JSON.parse(localStorage.getItem("items"));
+      $scope.productsDaily=JSON.parse(localStorage.getItem("items"));
       $scope.productsWeekly=JSON.parse(localStorage.getItem("itemsWeekly"));
       $scope.productsMonthly=JSON.parse(localStorage.getItem("itemsMonthly"));
       $scope.productsIrregular=JSON.parse(localStorage.getItem("itemsIrregular"));
@@ -13,8 +13,8 @@ app.controller("myCtrl", function($scope) {
         switch (listType) {
           case 'd':{     
             if (!$scope.addMe) {return;}   
-            if ($scope.products.indexOf($scope.addMe) == -1) {
-                $scope.products.push($scope.addMe);
+            if ($scope.productsDaily.indexOf($scope.addMe) == -1) {
+                $scope.productsDaily.push($scope.addMe);
             } else {
                 $scope.errortext = "The item is already in your daily shopping list."; 
             }
