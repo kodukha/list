@@ -28,7 +28,9 @@ h1 {display: inline-block; vertical-align: middle;}
 #errorTextMessage {display: inline-block; width: 50%; height: 45px; vertical-align: middle;}
 .saveItemsBtn {display: inline; float: right; margin-right: 10px;}
 .footer {clear: both; padding-top: 20px; background-color: #cff4ff;}
-#monthlyList tr:hover, #weeklyList tr:hover, #dailyList tr:hover, #irregularList tr:hover {background-color: #cff4ff;}
+#monthlyList tr:hover, #weeklyList tr:hover, #dailyList tr:hover {background-color: #cff4ff;}
+#irregularList tr:hover, #buyNowList tr:hover, #buyLaterList tr:hover {background-color: #cff4ff;}
 #monthlyList tr, #weeklyList tr, #dailyList tr, #irregularList tr {height: 25px;}
+#buyNowList tr, #buyLaterList tr {height: 25px;}
 .item {padding-right: 10px;}
 h3 {color: #337ab7;}

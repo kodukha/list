@@ -1,6 +1,7 @@
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
-    $scope.productsShopping = [];
+    $scope.productsBuyNow = [];
+    $scope.productsBuyLater = [];
     if (typeof(storage) !== "undefined") {
       $scope.productsDaily=JSON.parse(localStorage.getItem("items"));
       $scope.productsWeekly=JSON.parse(localStorage.getItem("itemsWeekly"));
@@ -47,12 +48,21 @@ app.controller("myCtrl", function($scope) {
             } 
             break; 
           }
-          case 's': {
-            if (!$scope.addMeShopping) {return;}   
-            if ($scope.productsShopping.indexOf($scope.addMeShopping) == -1) {
-                $scope.productsShopping.push($scope.addMeShopping);
+          case 'n': {
+            if (!$scope.addMeBuyNow) {return;}   
+            if ($scope.productsBuyNow.indexOf($scope.addMeBuyNow) == -1) {
+                $scope.productsBuyNow.push($scope.addMeBuyNow);
             } else {
-                $scope.errortext = "The item is already in your shopping list."; 
+                $scope.errortext = "The item is already in your 'buy now' shopping list."; 
+            } 
+            break; 
+          }  
+          case 'l': {
+            if (!$scope.addMeBuyLater) {return;}   
+            if ($scope.productsBuyLater.indexOf($scope.addMeBuyLater) == -1) {
+                $scope.productsBuyLater.push($scope.addMeBuyLater);
+            } else {
+                $scope.errortext = "The item is already in your 'buy later' shopping list."; 
             } 
             break; 
           }  
@@ -77,31 +87,39 @@ app.controller("myCtrl", function($scope) {
             $scope.productsIrregular.splice(x, 1);
             break;
           }
+          case 'n': {
+            $scope.productsBuyNow.splice(x, 1);
+            break;
+          }
+          case 'l': {
+            $scope.productsBuyLater.splice(x, 1);
+            break;
+          }
         }  
     }
     $scope.moveItem = function (x,listTypeFrom, listTypeTo) {
-        if (listTypeTo == "s") {
+        if (listTypeTo == "n") {
           $scope.errortext = ""; 
           switch (listTypeFrom){
             case 'd': {
-              $scope.addMeShopping = $scope.productsDaily[x];
+              $scope.addMeBuyNow = $scope.productsDaily[x];
               break;
             }
             case 'w': {
-              $scope.addMeShopping = $scope.productsWeekly[x];
+              $scope.addMeBuyNow = $scope.productsWeekly[x];
               break;
             }
             case 'm': {
-              $scope.addMeShopping = $scope.productsMonthly[x];
+              $scope.addMeBuyNow = $scope.productsMonthly[x];
               break;
             }
             case 'i': {
-              $scope.addMeShopping = $scope.productsIrregular[x];
+              $scope.addMeBuyNow = $scope.productsIrregular[x];
               break;
             }
           }           
           this.removeItem(x, listTypeFrom);          
-          this.addItem ('s');  
+          this.addItem ('n');  
         }
     }
     $scope.saveItems = function() {
@@ -117,7 +135,8 @@ app.controller("myCtrl", function($scope) {
             document.getElementById("weeklyList").style.visibility="hidden";
             document.getElementById("monthlyList").style.visibility="hidden";
             document.getElementById("irregularList").style.visibility="hidden";
-            document.getElementById("shoppingList").style.visibility="hidden";
+            document.getElementById("buyNowList").style.visibility="hidden";
+            document.getElementById("buyLaterList").style.visibility="hidden";
         switch (listType){
   /*        case 'd': { // daily Template only
             document.getElementById("dailyList").style.visibility="visible";
@@ -155,12 +174,13 @@ app.controller("myCtrl", function($scope) {
             document.getElementById("weeklyList").style.visibility="visible";
             document.getElementById("monthlyList").style.visibility="visible";
             document.getElementById("irregularList").style.visibility="visible";
-            document.getElementById("shoppingList").style.visibility="visible";
+            document.getElementById("buyNowList").style.visibility="visible";
+            document.getElementById("buyLaterList").style.visibility="visible";
             document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
             break;
           }
           case 's': { // shopping
-            document.getElementById("shoppingList").style.visibility="visible";
+            document.getElementById("buyNowList").style.visibility="visible";
             document.getElementById("headerTitle").innerHTML="The shopping. Remove items already bought";
             break;
           }

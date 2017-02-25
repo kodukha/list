@@ -38,7 +38,7 @@
             </td>
             <td>
               <img ng-click="removeItem($index, 'd')" src="bin.png" title="delete from list"/>
-              <img ng-click="moveItem($index, 'd','s')" src="cart.png" title="move to cart"/>
+              <img ng-click="moveItem($index, 'd','n')" src="cart.png" title="move to cart"/>
             </td>
           </tr>
         </table>
@@ -54,7 +54,7 @@
             </td>
             <td>
               <img ng-click="removeItem($index, 'w')" src="bin.png" title="delete from list"/>
-              <img ng-click="moveItem($index, 'w','s')" src="cart.png" title="move to cart"/>
+              <img ng-click="moveItem($index, 'w','n')" src="cart.png" title="move to cart"/>
             </td>
           </tr>
         </table>
@@ -70,7 +70,7 @@
             </td>
             <td>
               <img ng-click="removeItem($index, 'm')" src="bin.png" title="delete from list"/>
-              <img ng-click="moveItem($index, 'm','s')" src="cart.png" title="move to cart"/>
+              <img ng-click="moveItem($index, 'm','n')" src="cart.png" title="move to cart"/>
             </td>
           </tr>
         </table>
@@ -86,27 +86,42 @@
             </td>
             <td>
               <img ng-click="removeItem($index, 'i')" src="bin.png" title="delete from list"/>
-              <img ng-click="moveItem($index, 'i','s')" src="cart.png" title="move to cart"/>
+              <img ng-click="moveItem($index, 'i','n')" src="cart.png" title="move to cart"/>
             </td>
           </tr>
         </table>
         <input ng-model="addMeIrregular">
         <button ng-click="addItem('i')" class="btn  btn-primary">Add</button>
     </div>
-    <div class="col-sm-2 shopping" id="shoppingList">
-      <h3>shopping list:</h3>
+    <div class="col-sm-2 buyNow" id="buyNowList">
+      <h3>'buy now' list:</h3>
         <table>
-          <tr ng-repeat="x in productsShopping">
+          <tr ng-repeat="x in productsBuyNow">
             <td>
               <div class="item">{{x}} </div>
             </td>
             <td>
-              <img ng-click="removeItem($index, 's')" src="bin.png" title="delete from list"/>
+              <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list"/>
             </td>
           </tr>
         </table>
-        <input ng-model="addMeShopping">
-        <button ng-click="addItem('s')" class="btn  btn-primary">Add</button>
+        <input ng-model="addMeBuyNow">
+        <button ng-click="addItem('n')" class="btn  btn-primary">Add</button>
+    </div>
+    <div class="col-sm-2 buyLater" id="buyLaterList">
+      <h3>'buy later' list:</h3>
+        <table>
+          <tr ng-repeat="x in productsBuyLater">
+            <td>
+              <div class="item">{{x}} </div>
+            </td>
+            <td>
+              <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list"/>
+            </td>
+          </tr>
+        </table>
+        <input ng-model="addMeBuyLater">
+        <button ng-click="addItem('l')" class="btn  btn-primary">Add</button>
     </div>
     <div class="footer">
       <div>{{errortext}}</div>
