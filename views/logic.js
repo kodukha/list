@@ -1,12 +1,18 @@
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
+    $scope.itemsDaily =[];
+    $scope.itemsWeekly=[];
+    $scope.itemsMonthly=[];
+    $scope.itemsIrregular=[];
     $scope.itemsBuyNow = [];
     $scope.itemsBuyLater = [];
     if (typeof(storage) !== "undefined") {
-      $scope.itemsDaily=JSON.parse(localStorage.getItem("items"));
+      $scope.itemsDaily=JSON.parse(localStorage.getItem("itemsDaily"));
       $scope.itemsWeekly=JSON.parse(localStorage.getItem("itemsWeekly"));
       $scope.itemsMonthly=JSON.parse(localStorage.getItem("itemsMonthly"));
       $scope.itemsIrregular=JSON.parse(localStorage.getItem("itemsIrregular"));
+      $scope.itemsBuyNow=JSON.parse(localStorage.getItem("itemsBuyNow"));
+      $scope.itemsBuyLater=JSON.parse(localStorage.getItem("itemsBuyLater"));
     }
 
     $scope.addItem = function (listType) {
@@ -140,6 +146,10 @@ app.controller("myCtrl", function($scope) {
               $scope.addMeBuyLater = $scope.itemsIrregular[x];
               break;
             }
+            case 'n': {
+              $scope.addMeBuyLater = $scope.itemsBuyNow[x];
+              break;
+            }
           }           
           this.removeItem(x, listTypeFrom);          
           this.addItem ('l');  
@@ -247,6 +257,18 @@ app.controller("myCtrl", function($scope) {
                 binImages[i].style.visibility = "hidden";
               }
             }
+            var checkboxes = document.getElementsByClassName('buyNowItemCheckbox');
+            if (checkboxes.length > 0) {
+              for (i=0; i< checkboxes.length; i++) {
+                checkboxes[i].style.visibility = "hidden";
+              }
+            }
+            var noCheckboxes = document.getElementsByClassName('buyNowItem');
+            if (noCheckboxes.length > 0) {
+              for (i=0; i< noCheckboxes.length; i++) {
+                noCheckboxes[i].style.visibility = "visible";
+              }
+            }
             document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
             break;
           }
@@ -271,6 +293,18 @@ app.controller("myCtrl", function($scope) {
             if (binImages.length > 0) {
               for (i=0; i< binImages.length; i++) {
                 binImages[i].style.visibility = "hidden";
+              }
+            }
+            var checkboxes = document.getElementsByClassName('buyNowItemCheckbox');
+            if (checkboxes.length > 0) {
+              for (i=0; i< checkboxes.length; i++) {
+                checkboxes[i].style.visibility = "visible";
+              }
+            }
+            var noCheckboxes = document.getElementsByClassName('buyNowItem');
+            if (noCheckboxes.length > 0) {
+              for (i=0; i< noCheckboxes.length; i++) {
+                noCheckboxes[i].style.visibility = "hidden";
               }
             }
             document.getElementById("addNowInput").style.visibility="hidden";
