@@ -121,6 +121,29 @@ app.controller("myCtrl", function($scope) {
           this.removeItem(x, listTypeFrom);          
           this.addItem ('n');  
         }
+        else if (listTypeTo == "l") {
+          $scope.errortext = ""; 
+          switch (listTypeFrom){
+            case 'd': {
+              $scope.addMeBuyLater = $scope.productsDaily[x];
+              break;
+            }
+            case 'w': {
+              $scope.addMeBuyLater = $scope.productsWeekly[x];
+              break;
+            }
+            case 'm': {
+              $scope.addMeBuyLater = $scope.productsMonthly[x];
+              break;
+            }
+            case 'i': {
+              $scope.addMeBuyLater = $scope.productsIrregular[x];
+              break;
+            }
+          }           
+          this.removeItem(x, listTypeFrom);          
+          this.addItem ('l');  
+        }
     }
     $scope.saveItems = function() {
       if (typeof(storage) !== "undefined") {
