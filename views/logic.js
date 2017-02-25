@@ -74,6 +74,35 @@ app.controller("myCtrl", function($scope) {
           }  
         }  // end switch
     }
+    $scope.clearItems = function (listType) {
+        $scope.errortext = ""; 
+        switch (listType){
+          case 'd': {
+            $scope.itemsDaily=[];
+            break;
+          }
+          case 'w': {
+            $scope.itemsWeekly=[];
+            break;
+          }
+          case 'm': {
+            $scope.itemsMonthly=[];
+            break;
+          }
+          case 'i': {
+            $scope.itemsIrregular=[];
+            break;
+          }
+          case 'n': {
+            $scope.itemsBuyNow=[];
+            break;
+          }
+          case 'l': {
+            $scope.itemsBuyLater=[];
+            break;
+          }
+        }  
+    }
     $scope.removeItem = function (x,listType) {
         $scope.errortext = ""; 
         switch (listType){
@@ -121,6 +150,10 @@ app.controller("myCtrl", function($scope) {
             }
             case 'i': {
               $scope.addMeBuyNow = $scope.itemsIrregular[x];
+              break;
+            }
+            case 'l': {
+              $scope.addMeBuyNow = $scope.itemsBuyLater[x];
               break;
             }
           }           
@@ -286,7 +319,7 @@ app.controller("myCtrl", function($scope) {
             var clockImages = document.getElementsByClassName('clock');
             if (clockImages.length >0) {
               for (i=0; i< clockImages.length; i++) {
-                clockImages[i].style.visibility = "hidden";
+                clockImages[i].style.visibility = "hidden"; // should be visible for 'n' list
               }
             }
             var binImages = document.getElementsByClassName('bin');  

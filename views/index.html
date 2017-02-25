@@ -45,6 +45,7 @@
         </table>
         <input ng-model="addMeDaily">
         <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
+        <button ng-click="clearItems('d')" class="btn  btn-primary">Delete all</button>
     </div>
     <div class="col-sm-2 weekly" id="weeklyList">
       <h3>weekly template:</h3>
@@ -62,6 +63,7 @@
         </table>
         <input ng-model="addMeWeekly">
         <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
+        <button ng-click="clearItems('w')" class="btn  btn-primary">Delete all</button>
     </div>
     <div class="col-sm-2 monthly" id="monthlyList">
       <h3>monthly template:</h3>
@@ -79,6 +81,7 @@
         </table>
         <input ng-model="addMeMonthly">
         <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
+        <button ng-click="clearItems('m')" class="btn  btn-primary">Delete all</button>
     </div>
     <div class="col-sm-2 irregular" id="irregularList">
       <h3>on occasion template:</h3>
@@ -96,6 +99,7 @@
         </table>
         <input ng-model="addMeIrregular">
         <button ng-click="addItem('i')" class="btn  btn-primary">Add</button>
+        <button ng-click="clearItems('i')" class="btn  btn-primary">Delete all</button>
     </div>
     <div class="col-sm-2 buyNow" id="buyNowList">
       <h3>'buy now' list:</h3>
@@ -106,14 +110,15 @@
               <div class="buyNowItem">{{x}}</div>
             </td>
             <td>
-              <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list"/>
               <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later" class='clock'/>
+              <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list" class ="bin"/>              
             </td>
           </tr>
         </table>
         <div id="addNowInput">
           <input ng-model="addMeBuyNow">
           <button ng-click="addItem('n')" class="btn  btn-primary">Add</button>
+          <button ng-click="clearItems('n')" class="btn  btn-primary">Delete all</button>
         </div>
     </div>
     <div class="col-sm-2 buyLater" id="buyLaterList">
@@ -124,12 +129,14 @@
               <div class="item">{{x}} </div>
             </td>
             <td>
-              <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list"/>
+              <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
+              <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list" class="bin"/>
             </td>
           </tr>
         </table>
         <input ng-model="addMeBuyLater">
         <button ng-click="addItem('l')" class="btn  btn-primary">Add</button>
+        <button ng-click="clearItems('l')" class="btn  btn-primary">Delete all</button>
     </div>
     <div class="footer">
       <div>{{errortext}}</div>
