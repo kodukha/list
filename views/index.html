@@ -102,10 +102,12 @@
         <table>
           <tr ng-repeat="x in itemsBuyNow">
             <td>
-              <div class="item">{{x}} </div>
+              <div class="buyNowItemCheckbox"><input type="checkbox">{{x}}</input></div>
+              <div class="buyNowItem">{{x}}</div>
             </td>
             <td>
               <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list"/>
+              <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later" class='clock'/>
             </td>
           </tr>
         </table>
