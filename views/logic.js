@@ -117,28 +117,51 @@ app.controller("myCtrl", function($scope) {
             document.getElementById("weeklyList").style.visibility="hidden";
             document.getElementById("monthlyList").style.visibility="hidden";
             document.getElementById("irregularList").style.visibility="hidden";
+            document.getElementById("shoppingList").style.visibility="hidden";
         switch (listType){
-          case 'd': {
+  /*        case 'd': { // daily Template only
             document.getElementById("dailyList").style.visibility="visible";
             break;
           }
-          case 'w': {
+          case 'w': { // weekly template only
             document.getElementById("weeklyList").style.visibility="visible";
             break;
           }
-          case 'm': {
+          case 'm': { // monthly template only
             document.getElementById("monthlyList").style.visibility="visible";
             break;
           }
-          case 'i': {
+          case 'i': { // irregular template only
             document.getElementById("irregularList").style.visibility="visible";
             break;
           }
-          case 'a': {
+          case 'a': { // all templates
             document.getElementById("dailyList").style.visibility="visible";
             document.getElementById("weeklyList").style.visibility="visible";
             document.getElementById("monthlyList").style.visibility="visible";
             document.getElementById("irregularList").style.visibility="visible";
+            break;
+          }*/
+          case 't': { // templates only
+            document.getElementById("dailyList").style.visibility="visible";
+            document.getElementById("weeklyList").style.visibility="visible";
+            document.getElementById("monthlyList").style.visibility="visible";
+            document.getElementById("irregularList").style.visibility="visible";
+            document.getElementById("headerTitle").innerHTML="Create or update your own shopping template lists";
+            break;
+          }
+          case 'p': { // pre-shopping
+            document.getElementById("dailyList").style.visibility="visible";
+            document.getElementById("weeklyList").style.visibility="visible";
+            document.getElementById("monthlyList").style.visibility="visible";
+            document.getElementById("irregularList").style.visibility="visible";
+            document.getElementById("shoppingList").style.visibility="visible";
+            document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
+            break;
+          }
+          case 's': { // shopping
+            document.getElementById("shoppingList").style.visibility="visible";
+            document.getElementById("headerTitle").innerHTML="The shopping. Remove items already bought";
             break;
           }
         }  

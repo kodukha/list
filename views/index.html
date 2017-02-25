@@ -14,14 +14,18 @@
 <body>
 <div class="container-fluid">
   <div class="row" ng-app="myShoppingList" ng-controller="myCtrl">
-    <img class="icon" src="flower.jpg" height="75px"/><h1>Step 1: Create or update your own shopping lists</h1>
+    <img class="icon" src="flower.jpg" height="75px"/>
+    <h1><div id="headerTitle">The best shopping planning tool</div></h1>
     <nav>
       <ul>
-        <li><a href="" ng-click="show('a')">all</a></li>
-        <li><a href="" ng-click="show('d')">daily</a></li>
+        <li><a href="" ng-click="show('t')">Templates</a></li>
+        <li><a href="" ng-click="show('p')">Pre-Shopping</a></li>
+        <li><a href="" ng-click="show('s')">Shopping</a></li>
+        <!--<li><a href="" ng-click="show('a')">all</a></li>
+        <li><a href="" ng-click="show('d')">daily</a></li> 
         <li><a href="" ng-click="show('w')">weekly</a></li>
         <li><a href="" ng-click="show('m')">mothly</a></li>
-        <li><a href="" ng-click="show('i')">on occasion</a></li>
+        <li><a href="" ng-click="show('i')">on occasion</a></li>-->
       </ul>
     </nav>
     
@@ -107,7 +111,6 @@
     <div class="footer">
       <div>{{errortext}}</div>
       <div id="errorTextMessage">Try to add the same item twice, and you will get an error message.</div>
-      <button ng-click="goToStep2()" class="btn btn-primary goToStep2Btn">Go to step 2</button>
       <button ng-click="saveItems()" class="btn btn-primary saveItemsBtn">Save lists in storage</button>
     </div>
   </div> <!-- end app -->
