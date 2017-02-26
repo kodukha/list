@@ -1,11 +1,16 @@
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
+    $scope.isTemplates="false";
+    $scope.isPreShopping="true";
+    $scope.isShopping="false";
     $scope.itemsDaily =[];
     $scope.itemsWeekly=[];
     $scope.itemsMonthly=[];
     $scope.itemsIrregular=[];
     $scope.itemsBuyNow = [];
     $scope.itemsBuyLater = [];
+
+    // load 6 lists from local storage
     if (typeof(storage) !== "undefined") {
       $scope.itemsDaily=JSON.parse(localStorage.getItem("itemsDaily"));
       $scope.itemsWeekly=JSON.parse(localStorage.getItem("itemsWeekly"));
@@ -14,7 +19,7 @@ app.controller("myCtrl", function($scope) {
       $scope.itemsBuyNow=JSON.parse(localStorage.getItem("itemsBuyNow"));
       $scope.itemsBuyLater=JSON.parse(localStorage.getItem("itemsBuyLater"));
     }
-
+    // add item to some list
     $scope.addItem = function (listType) {
         $scope.errortext = "";
         switch (listType) {
@@ -74,6 +79,7 @@ app.controller("myCtrl", function($scope) {
           }  
         }  // end switch
     }
+    // clear all items from some list
     $scope.clearItems = function (listType) {
         $scope.errortext = ""; 
         switch (listType){
@@ -103,6 +109,7 @@ app.controller("myCtrl", function($scope) {
           }
         }  
     }
+    // remove item from some list
     $scope.removeItem = function (x,listType) {
         $scope.errortext = ""; 
         switch (listType){
@@ -132,6 +139,7 @@ app.controller("myCtrl", function($scope) {
           }
         }  
     }
+    // move item from one list to some other list
     $scope.moveItem = function (x,listTypeFrom, listTypeTo) {
         if (listTypeTo == "n") {
           $scope.errortext = ""; 
@@ -188,6 +196,7 @@ app.controller("myCtrl", function($scope) {
           this.addItem ('l');  
         }
     }
+    // save templates to local storage
     $scope.saveTemplateItems = function() {
       if (typeof(storage) !== "undefined") {
         localStorage.setItem("itemsDaily", JSON.stringify($scope.itemsDaily));
@@ -196,6 +205,7 @@ app.controller("myCtrl", function($scope) {
         localStorage.setItem("itemsIrregular", JSON.stringify($scope.itemsIrregular));
       }
     }
+    // save shopping lists to local storage
     $scope.saveShoppingItems = function() {
       if (typeof(storage) !== "undefined") {
         localStorage.setItem("itemsBuyNow", JSON.stringify($scope.itemsBuyNow));
@@ -203,37 +213,17 @@ app.controller("myCtrl", function($scope) {
       }
     }
     $scope.show = function(listType) {
-            document.getElementById("dailyList").style.visibility="hidden";
-            document.getElementById("weeklyList").style.visibility="hidden";
-            document.getElementById("monthlyList").style.visibility="hidden";
-            document.getElementById("irregularList").style.visibility="hidden";
-            document.getElementById("buyNowList").style.visibility="hidden";
-            document.getElementById("buyLaterList").style.visibility="hidden";
+        document.getElementById("dailyList").style.visibility="hidden";
+        document.getElementById("weeklyList").style.visibility="hidden";
+        document.getElementById("monthlyList").style.visibility="hidden";
+        document.getElementById("irregularList").style.visibility="hidden";
+        document.getElementById("buyNowList").style.visibility="hidden";
+        document.getElementById("buyLaterList").style.visibility="hidden";
         switch (listType){
-  /*        case 'd': { // daily Template only
-            document.getElementById("dailyList").style.visibility="visible";
-            break;
-          }
-          case 'w': { // weekly template only
-            document.getElementById("weeklyList").style.visibility="visible";
-            break;
-          }
-          case 'm': { // monthly template only
-            document.getElementById("monthlyList").style.visibility="visible";
-            break;
-          }
-          case 'i': { // irregular template only
-            document.getElementById("irregularList").style.visibility="visible";
-            break;
-          }
-          case 'a': { // all templates
-            document.getElementById("dailyList").style.visibility="visible";
-            document.getElementById("weeklyList").style.visibility="visible";
-            document.getElementById("monthlyList").style.visibility="visible";
-            document.getElementById("irregularList").style.visibility="visible";
-            break;
-          }*/
           case 't': { // templates only
+            $scope.isTemplates="true";
+            $scope.isPreShopping="false";
+            $scope.isShopping="false";
             document.getElementById("dailyList").style.visibility="visible";
             document.getElementById("weeklyList").style.visibility="visible";
             document.getElementById("monthlyList").style.visibility="visible";
@@ -263,6 +253,9 @@ app.controller("myCtrl", function($scope) {
             break;
           }
           case 'p': { // pre-shopping
+            $scope.isTemplates="false";
+            $scope.isPreShopping="true";
+            $scope.isShopping="false";
             document.getElementById("dailyList").style.visibility="visible";
             document.getElementById("weeklyList").style.visibility="visible";
             document.getElementById("monthlyList").style.visibility="visible";
@@ -306,6 +299,9 @@ app.controller("myCtrl", function($scope) {
             break;
           }
           case 's': { // shopping
+            $scope.isTemplates="false";
+            $scope.isPreShopping="false";
+            $scope.isShopping="true";
             document.getElementById("buyNowList").style.visibility="visible";
             document.getElementById("saveTemplateItemsButton").style.visibility="hidden";
             document.getElementById("saveShoppingItemsButton").style.visibility="hidden";
