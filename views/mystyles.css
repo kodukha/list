@@ -28,9 +28,41 @@ h1 {display: inline-block; vertical-align: middle;}
 #errorTextMessage {display: inline-block; width: 50%; height: 45px; vertical-align: middle;}
 .saveItemsBtn {display: inline; float: right; margin-right: 10px;}
 .footer {clear: both; padding-top: 20px; background-color: #cff4ff;}
-#monthlyList tr:hover, #weeklyList tr:hover, #dailyList tr:hover {background-color: #cff4ff;}
-#irregularList tr:hover, #buyNowList tr:hover, #buyLaterList tr:hover {background-color: #cff4ff;}
-#monthlyList tr, #weeklyList tr, #dailyList tr, #irregularList tr {height: 25px;}
-#buyNowList tr, #buyLaterList tr {height: 25px;}
+.list tr:hover {background-color: #cff4ff;}
+.list tr {height: 25px;}
 .item {padding-right: 10px;}
 h3 {color: #337ab7;}
+
+.c-custom-checkbox {
+  padding-left: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.c-custom-checkbox input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  border: 0;
+  left: 0;
+}
+.c-custom-checkbox .c-custom-checkbox__img {
+  display: inline;
+  position: absolute;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-image: none;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #333;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.c-custom-checkbox input[type=checkbox]:checked + .c-custom-checkbox__img {
+  background-position: 0 0;
+  background-color: green;
+}
