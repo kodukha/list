@@ -21,108 +21,191 @@
         <li><a href="" ng-click="show('t')">Templates</a></li>
         <li><a href="" ng-click="show('p')">Pre-Shopping</a></li>
         <li><a href="" ng-click="show('s')">Shopping</a></li>
-        <!--<li><a href="" ng-click="show('a')">all</a></li>
-        <li><a href="" ng-click="show('d')">daily</a></li> 
-        <li><a href="" ng-click="show('w')">weekly</a></li>
-        <li><a href="" ng-click="show('m')">mothly</a></li>
-        <li><a href="" ng-click="show('i')">on occasion</a></li>-->
       </ul>
     </nav>
-    
-    <div class="col-sm-2 daily" id="dailyList">
-      <h3>daily template:</h3>
-        <table>
-          <tr ng-repeat="x in itemsDaily">
-            <td>
-              <div class="item">{{x}} </div>
-            </td>
-            <td>
-              <img ng-click="removeItem($index, 'd')" src="bin.png" title="delete from list" class="bin"/>
-              <img ng-click="moveItem($index, 'd','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'd','l')" src="clock.png" title="buy later" class='clock'/>
-            </td>
-          </tr>
-        </table>
-        <input ng-model="addMeDaily">
-        <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('d')" class="btn  btn-primary">Delete all</button>
+
+    <!-- DAILY -->
+    <div class="col-sm-2 daily" id="dailyList" ng-if="isTemplates=='true'">
+      <h3>daily template 1:</h3>
+      <table>
+        <tr ng-repeat="x in itemsDaily">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="removeItem($index, 'd')" src="bin.png" title="delete from list"/>
+          </td>
+        </tr>
+      </table>
+      <input ng-model="addMeDaily">
+      <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
+      <button ng-click="clearItems('d')" class="btn  btn-primary">Delete all</button>
     </div>
-    <div class="col-sm-2 weekly" id="weeklyList">
-      <h3>weekly template:</h3>
-        <table>
-          <tr ng-repeat="x in itemsWeekly">
-            <td>
-              <div class="item">{{x}} </div>
-            </td>
-            <td>
-              <img ng-click="removeItem($index, 'w')" src="bin.png" title="delete from list" class="bin"/>
-              <img ng-click="moveItem($index, 'w','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'w','l')" src="clock.png" title="buy later" class='clock'/>
-            </td>
-          </tr>
-        </table>
-        <input ng-model="addMeWeekly">
-        <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('w')" class="btn  btn-primary">Delete all</button>
+    <div class="col-sm-2 daily" id="dailyList2" ng-if="isPreShopping=='true'">
+      <h3>daily template 2:</h3>
+      <table>
+        <tr ng-repeat="x in itemsDaily">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'd','n')" src="cart.png" title="buy now"/>
+            <img ng-click="moveItem($index, 'd','l')" src="clock.png" title="buy later"/>
+          </td>
+        </tr>
+      </table>
     </div>
-    <div class="col-sm-2 monthly" id="monthlyList">
-      <h3>monthly template:</h3>
-        <table>
-          <tr ng-repeat="x in itemsMonthly">
-            <td>
-              <div class="item">{{x}} </div>
-            </td>
-            <td>
-              <img ng-click="removeItem($index, 'm')" src="bin.png" title="delete from list" class="bin"/>
-              <img ng-click="moveItem($index, 'm','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'm','l')" src="clock.png" title="buy later" class='clock'/>
-            </td>
-          </tr>
-        </table>
-        <input ng-model="addMeMonthly">
-        <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('m')" class="btn  btn-primary">Delete all</button>
+
+    <!-- WEEKLY -->
+    <div class="col-sm-2 weekly" id="weeklyList" ng-if="isTemplates=='true'">
+      <h3>weekly template 1:</h3>
+      <table>
+        <tr ng-repeat="x in itemsWeekly">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="removeItem($index, 'w')" src="bin.png" title="delete from list"/>
+          </td>
+        </tr>
+      </table>
+      <input ng-model="addMeWeekly">
+      <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
+      <button ng-click="clearItems('w')" class="btn  btn-primary">Delete all</button>
     </div>
-    <div class="col-sm-2 irregular" id="irregularList">
-      <h3>on occasion template:</h3>
-        <table>
-          <tr ng-repeat="x in itemsIrregular">
-            <td>
-              <div class="item">{{x}} </div>
-            </td>
-            <td>
-              <img ng-click="removeItem($index, 'i')" src="bin.png" title="delete from list" class="bin"/>
-              <img ng-click="moveItem($index, 'i','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'i','l')" src="clock.png" title="buy later" class='clock'/>
-            </td>
-          </tr>
-        </table>
-        <input ng-model="addMeIrregular">
-        <button ng-click="addItem('i')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('i')" class="btn  btn-primary">Delete all</button>
+    <div class="col-sm-2 weekly" id="weeklyList2" ng-if="isPreShopping=='true'">
+      <h3>weekly template 2:</h3>
+      <table>
+        <tr ng-repeat="x in itemsWeekly">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'w','n')" src="cart.png" title="buy now"/>
+            <img ng-click="moveItem($index, 'w','l')" src="clock.png" title="buy later"/>
+          </td>
+        </tr>
+      </table>
     </div>
-    <div class="col-sm-2 buyNow" id="buyNowList">
-      <h3>'buy now' list:</h3>
+
+    <!-- MONTHLY -->    
+    <div class="col-sm-2 monthly" id="monthlyList" ng-if="isTemplates=='true'">
+      <h3>monthly template 1:</h3>
+      <table>
+        <tr ng-repeat="x in itemsMonthly">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="removeItem($index, 'm')" src="bin.png" title="delete from list"/>
+          </td>
+        </tr>
+      </table>
+      <input ng-model="addMeMonthly">
+      <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
+      <button ng-click="clearItems('m')" class="btn  btn-primary">Delete all</button>
+    </div>
+    <div class="col-sm-2 monthly" id="monthlyList2" ng-if="isPreShopping=='true'">
+      <h3>monthly template 2:</h3>
+      <table>
+        <tr ng-repeat="x in itemsMonthly">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'm','n')" src="cart.png" title="buy now"/>
+            <img ng-click="moveItem($index, 'm','l')" src="clock.png" title="buy later"/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- IRREGULAR -->
+    <div class="col-sm-2 irregular" id="irregularList" ng-if="isTemplates=='true'">
+      <h3>on occasion template 1:</h3>
+      <table>
+        <tr ng-repeat="x in itemsIrregular">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="removeItem($index, 'i')" src="bin.png" title="delete from list"/>
+          </td>
+        </tr>
+      </table>
+      <input ng-model="addMeIrregular">
+      <button ng-click="addItem('i')" class="btn  btn-primary">Add</button>
+      <button ng-click="clearItems('i')" class="btn  btn-primary">Delete all</button>
+    </div>
+    <div class="col-sm-2 irregular" id="irregularList2" ng-if="isPreShopping=='true'">
+      <h3>on occasion template 2:</h3>
+      <table>
+        <tr ng-repeat="x in itemsIrregular">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'i','n')" src="cart.png" title="buy now" class='cart'/>
+            <img ng-click="moveItem($index, 'i','l')" src="clock.png" title="buy later" class='clock'/>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- BUY NOW -->
+    <div class="col-sm-2 buyNow" id="buyNowList" ng-if="isPreShopping=='true'">
+      <h3>'buy now' list 2:</h3>
+      <table>
+        <tr ng-repeat="x in itemsBuyNow">
+          <td>
+            <div class="buyNowItem">{{x}}</div>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
+            <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list""/>         
+          </td>
+        </tr>
+      </table>
+      <div id="addNowInput">
+        <input ng-model="addMeBuyNow">
+        <button ng-click="addItem('n')" class="btn  btn-primary">Add</button>
+        <button ng-click="clearItems('n')" class="btn  btn-primary">Delete all</button>
+      </div>
+    </div>
+    <div class="col-sm-2 buyNow" id="buyNowList3" ng-if="isShopping=='true'">
+      <h3>'buy now' list 3:</h3>
         <table>
           <tr ng-repeat="x in itemsBuyNow">
             <td>
               <div class="buyNowItemCheckbox"><input type="checkbox">{{x}}</input></div>
-              <div class="buyNowItem">{{x}}</div>
             </td>
             <td>
-              <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later" class='clock'/>
-              <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list" class ="bin"/>              
-            </td>
+              <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
+             </td>
           </tr>
         </table>
-        <div id="addNowInput">
-          <input ng-model="addMeBuyNow">
-          <button ng-click="addItem('n')" class="btn  btn-primary">Add</button>
-          <button ng-click="clearItems('n')" class="btn  btn-primary">Delete all</button>
-        </div>
     </div>
-    <div class="col-sm-2 buyLater" id="buyLaterList">
-      <h3>'buy later' list:</h3>
+
+    <!--BUY LATER -->
+    <div class="col-sm-2 buyLater" id="buyLaterList" ng-if="isPreShopping=='true'">
+      <h3>'buy later' list 2:</h3>
+      <table>
+        <tr ng-repeat="x in itemsBuyLater">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
+            <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list" class="bin"/>
+          </td>
+        </tr>
+      </table>
+      <input ng-model="addMeBuyLater">
+      <button ng-click="addItem('l')" class="btn  btn-primary">Add</button>
+      <button ng-click="clearItems('l')" class="btn  btn-primary">Delete all</button>
+    </div>
+    <div class="col-sm-2 buyLater" id="buyLaterList3" ng-if="isShopping=='true'">
+      <h3>'buy later' list 3:</h3>
         <table>
           <tr ng-repeat="x in itemsBuyLater">
             <td>
@@ -130,14 +213,11 @@
             </td>
             <td>
               <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list" class="bin"/>
             </td>
           </tr>
         </table>
-        <input ng-model="addMeBuyLater">
-        <button ng-click="addItem('l')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('l')" class="btn  btn-primary">Delete all</button>
     </div>
+    
     <div class="footer">
       <div>{{errortext}}</div>
       <div id="errorTextMessage">Try to add the same item twice, and you will get an error message.</div>

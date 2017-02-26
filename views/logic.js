@@ -10,7 +10,7 @@ app.controller("myCtrl", function($scope) {
     $scope.itemsBuyNow = [];
     $scope.itemsBuyLater = [];
 
-    // load 6 lists from local storage
+    // load all lists from local storage
     if (typeof(storage) !== "undefined") {
       $scope.itemsDaily=JSON.parse(localStorage.getItem("itemsDaily"));
       $scope.itemsWeekly=JSON.parse(localStorage.getItem("itemsWeekly"));
@@ -213,88 +213,18 @@ app.controller("myCtrl", function($scope) {
       }
     }
     $scope.show = function(listType) {
-        document.getElementById("dailyList").style.visibility="hidden";
-        document.getElementById("weeklyList").style.visibility="hidden";
-        document.getElementById("monthlyList").style.visibility="hidden";
-        document.getElementById("irregularList").style.visibility="hidden";
-        document.getElementById("buyNowList").style.visibility="hidden";
-        document.getElementById("buyLaterList").style.visibility="hidden";
         switch (listType){
           case 't': { // templates only
             $scope.isTemplates="true";
             $scope.isPreShopping="false";
             $scope.isShopping="false";
-            document.getElementById("dailyList").style.visibility="visible";
-            document.getElementById("weeklyList").style.visibility="visible";
-            document.getElementById("monthlyList").style.visibility="visible";
-            document.getElementById("irregularList").style.visibility="visible";
-            document.getElementById("saveTemplateItemsButton").style.visibility="visible";
-            document.getElementById("saveShoppingItemsButton").style.visibility="hidden";
-            var cartImages = document.getElementsByClassName('cart');
-            if (cartImages.length > 0) {
-              for (i=0; i< cartImages.length; i++) {
-                cartImages[i].style.visibility = "hidden";
-              }
-            }
-            var clockImages = document.getElementsByClassName('clock');
-            if (clockImages.length >0) {
-              for (i=0; i< clockImages.length; i++) {
-                clockImages[i].style.visibility = "hidden";
-              }
-            }
-            var binImages = document.getElementsByClassName('bin');
-            if (binImages.length > 0) {
-              for (i=0; i< binImages.length; i++) {
-                binImages[i].style.visibility = "visible";
-              }
-            }
             document.getElementById("headerTitle").innerHTML="Create or update your own shopping template lists";
-            document.getElementById("addNowInput").style.visibility="hidden";
             break;
           }
           case 'p': { // pre-shopping
             $scope.isTemplates="false";
             $scope.isPreShopping="true";
             $scope.isShopping="false";
-            document.getElementById("dailyList").style.visibility="visible";
-            document.getElementById("weeklyList").style.visibility="visible";
-            document.getElementById("monthlyList").style.visibility="visible";
-            document.getElementById("irregularList").style.visibility="visible";
-            document.getElementById("buyNowList").style.visibility="visible";
-            document.getElementById("buyLaterList").style.visibility="visible";
-            document.getElementById("addNowInput").style.visibility="visible";
-            document.getElementById("saveTemplateItemsButton").style.visibility="hidden";
-            document.getElementById("saveShoppingItemsButton").style.visibility="visible";
-            var cartImages = document.getElementsByClassName('cart');
-            if (cartImages.length > 0) {
-              for (i=0; i< cartImages.length; i++) {
-                cartImages[i].style.visibility = "visible";
-              }
-            }
-            var clockImages = document.getElementsByClassName('clock');
-            if (clockImages.length >0) {
-              for (i=0; i< clockImages.length; i++) {
-                clockImages[i].style.visibility = "visible";
-              }
-            }
-            var binImages = document.getElementsByClassName('bin');
-            if (binImages.length > 0) {
-              for (i=0; i< binImages.length; i++) {
-                binImages[i].style.visibility = "hidden";
-              }
-            }
-            var checkboxes = document.getElementsByClassName('buyNowItemCheckbox');
-            if (checkboxes.length > 0) {
-              for (i=0; i< checkboxes.length; i++) {
-                checkboxes[i].style.visibility = "hidden";
-              }
-            }
-            var noCheckboxes = document.getElementsByClassName('buyNowItem');
-            if (noCheckboxes.length > 0) {
-              for (i=0; i< noCheckboxes.length; i++) {
-                noCheckboxes[i].style.visibility = "visible";
-              }
-            }
             document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
             break;
           }
@@ -302,41 +232,7 @@ app.controller("myCtrl", function($scope) {
             $scope.isTemplates="false";
             $scope.isPreShopping="false";
             $scope.isShopping="true";
-            document.getElementById("buyNowList").style.visibility="visible";
-            document.getElementById("saveTemplateItemsButton").style.visibility="hidden";
-            document.getElementById("saveShoppingItemsButton").style.visibility="hidden";
-            document.getElementById("headerTitle").innerHTML="The shopping. Remove items already bought";
-            var cartImages = document.getElementsByClassName('cart');
-            if (cartImages.length > 0) {
-              for (i=0; i< cartImages.length; i++) {
-                cartImages[i].style.visibility = "hidden";
-              }
-            }
-            var clockImages = document.getElementsByClassName('clock');
-            if (clockImages.length >0) {
-              for (i=0; i< clockImages.length; i++) {
-                clockImages[i].style.visibility = "hidden"; // should be visible for 'n' list
-              }
-            }
-            var binImages = document.getElementsByClassName('bin');  
-            if (binImages.length > 0) {
-              for (i=0; i< binImages.length; i++) {
-                binImages[i].style.visibility = "hidden";
-              }
-            }
-            var checkboxes = document.getElementsByClassName('buyNowItemCheckbox');
-            if (checkboxes.length > 0) {
-              for (i=0; i< checkboxes.length; i++) {
-                checkboxes[i].style.visibility = "visible";
-              }
-            }
-            var noCheckboxes = document.getElementsByClassName('buyNowItem');
-            if (noCheckboxes.length > 0) {
-              for (i=0; i< noCheckboxes.length; i++) {
-                noCheckboxes[i].style.visibility = "hidden";
-              }
-            }
-            document.getElementById("addNowInput").style.visibility="hidden";
+            document.getElementById("headerTitle").innerHTML="The shopping. Check items already bought";
             break;
           }
         }  
