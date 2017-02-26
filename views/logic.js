@@ -79,6 +79,30 @@ app.controller("myCtrl", function($scope) {
           }  
         }  // end switch
     }
+    // edit item
+    $scope.editItem = function (x, listType) {
+      $scope.errortext = ""; 
+      switch (listType){
+        case 'd': {
+          break;
+        }
+        case 'w': {
+          break;
+        }
+        case 'm': {
+          break;
+        }
+        case 'i': {
+          break;
+        }
+        case 'n': {
+          break;
+        }
+        case 'l': {
+          break;
+        }
+      }
+    }
     // clear all items from some list
     $scope.clearItems = function (listType) {
         $scope.errortext = ""; 
@@ -212,13 +236,21 @@ app.controller("myCtrl", function($scope) {
         localStorage.setItem("itemsBuyLater", JSON.stringify($scope.itemsBuyLater));
       }
     }
+    // clear 'buy now' list and save both shopping lists to local storage
+    $scope.finishShopping = function() {
+      $scope.itemsBuyNow=[];
+      if (typeof(storage) !== "undefined") {
+        localStorage.setItem("itemsBuyNow", JSON.stringify($scope.itemsBuyNow));
+        localStorage.setItem("itemsBuyLater", JSON.stringify($scope.itemsBuyLater));
+      }
+    }
     $scope.show = function(listType) {
         switch (listType){
           case 't': { // templates only
             $scope.isTemplates="true";
             $scope.isPreShopping="false";
             $scope.isShopping="false";
-            document.getElementById("headerTitle").innerHTML="Create or update your own shopping template lists";
+            document.getElementById("headerTitle").innerHTML="Create or update templates";
             break;
           }
           case 'p': { // pre-shopping
@@ -232,7 +264,7 @@ app.controller("myCtrl", function($scope) {
             $scope.isTemplates="false";
             $scope.isPreShopping="false";
             $scope.isShopping="true";
-            document.getElementById("headerTitle").innerHTML="The shopping. Check items already bought";
+            document.getElementById("headerTitle").innerHTML="The shopping. Check or postpone";
             break;
           }
         }  

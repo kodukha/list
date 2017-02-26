@@ -33,6 +33,7 @@
             <div class="item">{{x}} </div>
           </td>
           <td>
+            <img ng-click="editItem($index, 'd')" src="pencil.png" title="edit"/>
             <img ng-click="removeItem($index, 'd')" src="bin.png" title="delete from list"/>
           </td>
         </tr>
@@ -65,6 +66,7 @@
             <div class="item">{{x}} </div>
           </td>
           <td>
+            <img ng-click="editItem($index, 'w')" src="pencil.png" title="edit"/>
             <img ng-click="removeItem($index, 'w')" src="bin.png" title="delete from list"/>
           </td>
         </tr>
@@ -97,6 +99,7 @@
             <div class="item">{{x}} </div>
           </td>
           <td>
+            <img ng-click="editItem($index, 'm')" src="pencil.png" title="edit"/>
             <img ng-click="removeItem($index, 'm')" src="bin.png" title="delete from list"/>
           </td>
         </tr>
@@ -129,6 +132,7 @@
             <div class="item">{{x}} </div>
           </td>
           <td>
+            <img ng-click="editItem($index, 'i')" src="pencil.png" title="edit"/>
             <img ng-click="removeItem($index, 'i')" src="bin.png" title="delete from list"/>
           </td>
         </tr>
@@ -162,6 +166,7 @@
           </td>
           <td>
             <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
+            <img ng-click="editItem($index, 'n')" src="pencil.png" title="edit"/>
             <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list""/>         
           </td>
         </tr>
@@ -174,19 +179,20 @@
     </div>
     <div class="col-sm-2 buyNow list" id="buyNowList2" ng-if="isShopping=='true'">
       <h3>'buy now' list 3:</h3>
-        <table>
-          <tr ng-repeat="x in itemsBuyNow">
-            <td>
-              <label class="c-custom-checkbox">
-                <input type="checkbox" />
-                <i class="c-custom-checkbox__img"></i>{{x}}
-              </label>
-            </td>
-            <td>
-              <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
-             </td>
-          </tr>
-        </table>
+      <table>
+        <tr ng-repeat="x in itemsBuyNow">
+          <td>
+            <label class="customCheckbox">
+              <input type="checkbox" />
+              <p class="customCheckboxImg"></p>
+              {{x}}
+            </label>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
+           </td>
+        </tr>
+      </table>
     </div>
 
     <!--BUY LATER -->
@@ -199,6 +205,7 @@
           </td>
           <td>
             <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
+            <img ng-click="editItem($index, 'l')" src="pencil.png" title="edit"/>
             <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list" class="bin"/>
           </td>
         </tr>
@@ -224,8 +231,9 @@
     <div class="footer">
       <div>{{errortext}}</div>
       <div id="errorTextMessage">Try to add the same item twice, and you will get an error message.</div>
-      <button ng-click="saveShoppingItems()" id="saveShoppingItemsButton" class="btn btn-primary saveItemsBtn">Save shopping lists</button>
-      <button ng-click="saveTemplateItems()" id="saveTemplateItemsButton" class="btn btn-primary saveItemsBtn">Save template lists</button>
+      <button ng-click="finishShopping()" class="btn btn-primary footerBtn" title="Clear 'buy now' and save lists" ng-if="isShopping=='true'">Finished shopping</button>
+      <button ng-click="saveShoppingItems()" class="btn btn-primary footerBtn" title="Save 'buy now' 'buy later' lists" ng-if="isPreShopping=='true'">Save shopping lists</button>
+      <button ng-click="saveTemplateItems()" class="btn btn-primary footerBtn" title="Save template lists" ng-if="isTemplates=='true'">Save template lists</button>
     </div>
   </div> <!-- end app -->
 </div>

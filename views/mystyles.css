@@ -1,4 +1,7 @@
-nav{margin-top: 10px; margin-bottom: 10px;}
+nav{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 nav ul {
     list-style-type: none;
@@ -23,46 +26,81 @@ nav li a {
 nav li a:hover {
     background-color: #f6fb64;
 }
-.icon {display: inline; padding: 10px;}
-h1 {display: inline-block; vertical-align: middle;}
-#errorTextMessage {display: inline-block; width: 50%; height: 45px; vertical-align: middle;}
-.saveItemsBtn {display: inline; float: right; margin-right: 10px;}
-.footer {clear: both; padding-top: 20px; background-color: #cff4ff;}
-.list tr:hover {background-color: #cff4ff;}
-.list tr {height: 25px;}
-.item {padding-right: 10px;}
-h3 {color: #337ab7;}
 
-.c-custom-checkbox {
-  padding-left: 20px;
+.icon {
+    display: inline;
+    padding: 10px;
+}
+
+h1 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#errorTextMessage {
+    display: inline-block;
+    width: 50%;
+    height: 45px;
+    vertical-align: middle;
+}
+
+.footerBtn {
+    display: inline;
+    float: right;
+    margin-right: 10px;
+}
+
+.footer {
+    clear: both;
+    padding-top: 20px;
+    background-color: #cff4ff;
+}
+
+.list tr:hover {
+    background-color: #cff4ff;
+}
+
+.list tr {
+    height: 25px;
+}
+
+.item {
+    padding-right: 10px;
+}
+
+h3 {
+    color: #337ab7;
+}
+
+.customCheckbox {
+  padding-left: 30px;
   position: relative;
   cursor: pointer;
 }
-.c-custom-checkbox input[type=checkbox] {
+.customCheckbox input[type=checkbox] {
   position: absolute;
   opacity: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
-  height: 15px;
-  width: 15px;
+  height: 25px;
+  width: 25px;
   padding: 0;
   border: 0;
   left: 0;
 }
-.c-custom-checkbox .c-custom-checkbox__img {
+.customCheckbox .customCheckboxImg {
   display: inline;
   position: absolute;
   left: 0;
-  width: 15px;
-  height: 15px;
-  background-image: none;
-  background-color: #fff;
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff;
   color: #000;
   border: 1px solid #333;
   border-radius: 3px;
   cursor: pointer;
 }
-.c-custom-checkbox input[type=checkbox]:checked + .c-custom-checkbox__img {
+.customCheckbox input[type=checkbox]:checked + .customCheckboxImg {
   background-position: 0 0;
-  background-color: green;
+  background-image: url("tick.png");
 }
