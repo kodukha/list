@@ -251,6 +251,7 @@ app.controller("myCtrl", function($scope) {
             $scope.isPreShopping="false";
             $scope.isShopping="false";
             document.getElementById("headerTitle").innerHTML="Create or update templates";
+            document.getElementById("buyNowItemActions").style.visibility="hidden";
             break;
           }
           case 'p': { // pre-shopping
@@ -258,6 +259,7 @@ app.controller("myCtrl", function($scope) {
             $scope.isPreShopping="true";
             $scope.isShopping="false";
             document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
+            document.getElementById("buyNowItemActions").style.visibility="visible";
             break;
           }
           case 's': { // shopping
@@ -265,6 +267,7 @@ app.controller("myCtrl", function($scope) {
             $scope.isPreShopping="false";
             $scope.isShopping="true";
             document.getElementById("headerTitle").innerHTML="The shopping. Check or postpone";
+            document.getElementById("buyNowItemActions").style.visibility="hidden";
             break;
           }
         }  

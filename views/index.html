@@ -27,6 +27,7 @@
     <!-- DAILY -->
     <div class="col-sm-2 daily list" id="dailyList" ng-if="isTemplates=='true'">
       <h3>daily template 1:</h3>
+      <div ng-if="itemsDaily.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsDaily">
           <td>
@@ -44,6 +45,7 @@
     </div>
     <div class="col-sm-2 daily list" id="dailyList2" ng-if="isPreShopping=='true'">
       <h3>daily template 2:</h3>
+      <div ng-if="itemsDaily.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsDaily">
           <td>
@@ -60,6 +62,7 @@
     <!-- WEEKLY -->
     <div class="col-sm-2 weekly list" id="weeklyList" ng-if="isTemplates=='true'">
       <h3>weekly template 1:</h3>
+      <div ng-if="itemsWeekly.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsWeekly">
           <td>
@@ -77,6 +80,7 @@
     </div>
     <div class="col-sm-2 weekly list" id="weeklyList2" ng-if="isPreShopping=='true'">
       <h3>weekly template 2:</h3>
+      <div ng-if="itemsWeekly.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsWeekly">
           <td>
@@ -93,6 +97,7 @@
     <!-- MONTHLY -->    
     <div class="col-sm-2 monthly list" id="monthlyList" ng-if="isTemplates=='true'">
       <h3>monthly template 1:</h3>
+      <div ng-if="itemsMonthly.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsMonthly">
           <td>
@@ -110,6 +115,7 @@
     </div>
     <div class="col-sm-2 monthly list" id="monthlyList2" ng-if="isPreShopping=='true'">
       <h3>monthly template 2:</h3>
+      <div ng-if="itemsMonthly.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsMonthly">
           <td>
@@ -126,6 +132,7 @@
     <!-- IRREGULAR -->
     <div class="col-sm-2 irregular list" id="irregularList" ng-if="isTemplates=='true'">
       <h3>on occasion template 1:</h3>
+      <div ng-if="itemsIrregular.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsIrregular">
           <td>
@@ -143,6 +150,7 @@
     </div>
     <div class="col-sm-2 irregular list" id="irregularList2" ng-if="isPreShopping=='true'">
       <h3>on occasion template 2:</h3>
+      <div ng-if="itemsIrregular.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsIrregular">
           <td>
@@ -157,47 +165,45 @@
     </div>
 
     <!-- BUY NOW -->
-    <div class="col-sm-2 buyNow list" id="buyNowList" ng-if="isPreShopping=='true'">
-      <h3>'buy now' list 2:</h3>
-      <table>
+    <div class="col-sm-2 buyNow list" id="buyNowList">
+      <div ng-if="isTemplates=='false'">
+        <h3>'buy now' list</h3>
+        <div ng-if="itemsBuyNow.length == 0" > list is empty</div>
+      </div>
+      <table ng-if="isTemplates=='false'">
         <tr ng-repeat="x in itemsBuyNow">
           <td>
-            <div class="buyNowItem">{{x}}</div>
+            <div ng-if="isPreShopping=='true'">
+              <div class="buyNowItem">{{x}}</div>
+            </div>
+            <div ng-if="isPreShopping=='false'">
+              <label class="customCheckbox">
+                <input type="checkbox" />
+                <p class="customCheckboxImg"></p>
+                {{x}}
+              </label>
+            </div>            
           </td>
           <td>
             <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
-            <img ng-click="editItem($index, 'n')" src="pencil.png" title="edit"/>
-            <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list""/>         
+            <span ng-if="isPreShopping=='true'">              
+              <img ng-click="editItem($index, 'n')" src="pencil.png" title="edit"/>
+              <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list""/>
+            <span>
           </td>
         </tr>
       </table>
-      <div id="addNowInput">
+      <div id="buyNowItemActions">
         <input ng-model="addMeBuyNow">
         <button ng-click="addItem('n')" class="btn  btn-primary">Add</button>
         <button ng-click="clearItems('n')" class="btn  btn-primary">Delete all</button>
       </div>
     </div>
-    <div class="col-sm-2 buyNow list" id="buyNowList2" ng-if="isShopping=='true'">
-      <h3>'buy now' list 3:</h3>
-      <table>
-        <tr ng-repeat="x in itemsBuyNow">
-          <td>
-            <label class="customCheckbox">
-              <input type="checkbox" />
-              <p class="customCheckboxImg"></p>
-              {{x}}
-            </label>
-          </td>
-          <td>
-            <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
-           </td>
-        </tr>
-      </table>
-    </div>
 
     <!--BUY LATER -->
     <div class="col-sm-2 buyLater list" id="buyLaterList" ng-if="isPreShopping=='true'">
       <h3>'buy later' list 2:</h3>
+      <div ng-if="itemsBuyLater.length == 0" > list is empty</div>
       <table>
         <tr ng-repeat="x in itemsBuyLater">
           <td>
@@ -216,16 +222,17 @@
     </div>
     <div class="col-sm-2 buyLater list" id="buyLaterList2" ng-if="isShopping=='true'">
       <h3>'buy later' list 3:</h3>
+      <div ng-if="itemsBuyLater.length == 0" > list is empty</div>
         <table>
-          <tr ng-repeat="x in itemsBuyLater">
-            <td>
-              <div class="item">{{x}} </div>
-            </td>
-            <td>
-              <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
-            </td>
-          </tr>
-        </table>
+        <tr ng-repeat="x in itemsBuyLater">
+          <td>
+            <div class="item">{{x}} </div>
+          </td>
+          <td>
+            <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <div class="footer">
