@@ -252,6 +252,11 @@ app.controller("myCtrl", function($scope) {
             $scope.isShopping="false";
             document.getElementById("headerTitle").innerHTML="Create or update templates";
             document.getElementById("buyNowItemActions").style.visibility="hidden";
+            document.getElementById("buyLaterItemActions").style.visibility="hidden";
+            document.getElementById("dailyItemActions").style.visibility="visible";
+            document.getElementById("weeklyItemActions").style.visibility="visible";
+            document.getElementById("monthlyItemActions").style.visibility="visible";
+            document.getElementById("irregularItemActions").style.visibility="visible";
             break;
           }
           case 'p': { // pre-shopping
@@ -260,6 +265,11 @@ app.controller("myCtrl", function($scope) {
             $scope.isShopping="false";
             document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
             document.getElementById("buyNowItemActions").style.visibility="visible";
+            document.getElementById("buyLaterItemActions").style.visibility="visible";
+            document.getElementById("dailyItemActions").style.visibility="hidden";
+            document.getElementById("weeklyItemActions").style.visibility="hidden";
+            document.getElementById("monthlyItemActions").style.visibility="hidden";
+            document.getElementById("irregularItemActions").style.visibility="hidden";
             break;
           }
           case 's': { // shopping
@@ -268,6 +278,11 @@ app.controller("myCtrl", function($scope) {
             $scope.isShopping="true";
             document.getElementById("headerTitle").innerHTML="The shopping. Check or postpone";
             document.getElementById("buyNowItemActions").style.visibility="hidden";
+            document.getElementById("buyLaterItemActions").style.visibility="hidden";
+            document.getElementById("dailyItemActions").style.visibility="hidden";
+            document.getElementById("weeklyItemActions").style.visibility="hidden";
+            document.getElementById("monthlyItemActions").style.visibility="hidden";
+            document.getElementById("irregularItemActions").style.visibility="hidden";
             break;
           }
         }  
