@@ -30,6 +30,7 @@ app.controller("myCtrl", function($scope) {
             } else {
                 $scope.errortext = "The item is already in your daily shopping template list."; 
             }
+            $scope.addMeDaily="";
             break;
           }
           case 'w': {
@@ -39,6 +40,7 @@ app.controller("myCtrl", function($scope) {
             } else {
                 $scope.errortext = "The item is already in your weekly shopping template list."; 
             }
+            $scope.addMeWeekly="";
             break;
           }
           case 'm': {
@@ -48,6 +50,7 @@ app.controller("myCtrl", function($scope) {
             } else {
                 $scope.errortext = "The item is already in your monthly shopping template list."; 
             }
+            $scope.addMeMonthly="";
             break;
           }
           case 'i': {
@@ -57,6 +60,7 @@ app.controller("myCtrl", function($scope) {
             } else {
                 $scope.errortext = "The item is already in your irregular shopping template list."; 
             } 
+            $scope.addMeIrregular="";
             break; 
           }
           case 'n': {
@@ -65,7 +69,8 @@ app.controller("myCtrl", function($scope) {
                 $scope.itemsBuyNow.push($scope.addMeBuyNow);
             } else {
                 $scope.errortext = "The item is already in your 'buy now' shopping list."; 
-            } 
+            }
+            $scope.addMeBuyNow=""; 
             break; 
           }  
           case 'l': {
@@ -75,34 +80,43 @@ app.controller("myCtrl", function($scope) {
             } else {
                 $scope.errortext = "The item is already in your 'buy later' shopping list."; 
             } 
+            $scope.addMeBuyLater="";
             break; 
           }  
         }  // end switch
     }
-    // edit item
+    // edit item. step 1
     $scope.editItem = function (x, listType) {
       $scope.errortext = ""; 
       switch (listType){
         case 'd': {
+          $scope.addMeDaily = $scope.itemsDaily[x];
           break;
         }
         case 'w': {
+          $scope.addMeWeekly = $scope.itemsWeekly[x];
           break;
         }
         case 'm': {
+          $scope.addMeMonthly = $scope.itemsMonthly[x];
           break;
         }
         case 'i': {
+          $scope.addMeIrregular = $scope.itemsIrregular[x];
           break;
         }
         case 'n': {
+          $scope.addMeBuyNow = $scope.itemsBuyNow[x];
           break;
         }
         case 'l': {
+          $scope.addMeBuyLater = $scope.itemsBuyLater[x];
           break;
         }
       }
+      this.removeItem(x, listType);
     }
+
     // clear all items from some list
     $scope.clearItems = function (listType) {
         $scope.errortext = ""; 
