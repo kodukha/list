@@ -9,6 +9,7 @@ app.controller("myCtrl", function($scope) {
     $scope.itemsIrregular=[];
     $scope.itemsBuyNow = [];
     $scope.itemsBuyLater = [];
+    $scope.listItemsPlain="";
 
     // load all lists from local storage
     if (typeof(storage) !== "undefined") {
@@ -250,6 +251,11 @@ app.controller("myCtrl", function($scope) {
         localStorage.setItem("itemsBuyLater", JSON.stringify($scope.itemsBuyLater));
       }
     }
+    // show easy to copy 'buy now' list
+    $scope.showPlainList = function() {
+      $scope.listItemsPlain=JSON.stringify($scope.itemsBuyNow).replace(/["\[\]]/gi, '').replace(",", ", ");
+      document.getElementById("listItemsPlain").style.visibility="visible";
+    }    
     // clear 'buy now' list and save both shopping lists to local storage
     $scope.finishShopping = function() {
       $scope.itemsBuyNow=[];
@@ -271,6 +277,7 @@ app.controller("myCtrl", function($scope) {
             document.getElementById("weeklyItemActions").style.visibility="visible";
             document.getElementById("monthlyItemActions").style.visibility="visible";
             document.getElementById("irregularItemActions").style.visibility="visible";
+            document.getElementById("listItemsPlain").style.visibility="hidden";
             break;
           }
           case 'p': { // pre-shopping
@@ -284,6 +291,7 @@ app.controller("myCtrl", function($scope) {
             document.getElementById("weeklyItemActions").style.visibility="hidden";
             document.getElementById("monthlyItemActions").style.visibility="hidden";
             document.getElementById("irregularItemActions").style.visibility="hidden";
+            document.getElementById("listItemsPlain").style.visibility="hidden";
             break;
           }
           case 's': { // shopping
@@ -297,6 +305,7 @@ app.controller("myCtrl", function($scope) {
             document.getElementById("weeklyItemActions").style.visibility="hidden";
             document.getElementById("monthlyItemActions").style.visibility="hidden";
             document.getElementById("irregularItemActions").style.visibility="hidden";
+            document.getElementById("listItemsPlain").style.visibility="hidden";
             break;
           }
         }  

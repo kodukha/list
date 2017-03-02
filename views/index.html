@@ -33,11 +33,11 @@
       <table ng-if="isShopping=='false'">
         <tr ng-repeat="x in itemsDaily">
           <td>
-            <div class="item"> {{x}} </div>
+            <div class="item"> {{x}} </div>            
           </td>
           <td>
-            <span ng-if="isTemplates=='true'">               
-              <img ng-click="editItem($index, 'd')" src="pencil.png" title="edit"/>
+            <span ng-if="isTemplates=='true'">   
+              <img ng-click="editItem($index, 'd')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
               <img ng-click="removeItem($index, 'd')" src="bin.png" title="delete from list" class="bin"/>
             </span>
             <span ng-if="isPreShopping=='true'">
@@ -67,7 +67,7 @@
           </td>
           <td>
             <span ng-if="isTemplates=='true'">               
-              <img ng-click="editItem($index, 'w')" src="pencil.png" title="edit"/>
+              <img ng-click="editItem($index, 'w')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
               <img ng-click="removeItem($index, 'w')" src="bin.png" title="delete from list" class="bin"/>
             </span>
             <span ng-if="isPreShopping=='true'">
@@ -97,7 +97,7 @@
           </td>
           <td>
             <span ng-if="isTemplates=='true'">               
-              <img ng-click="editItem($index, 'm')" src="pencil.png" title="edit"/>
+              <img ng-click="editItem($index, 'm')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
               <img ng-click="removeItem($index, 'm')" src="bin.png" title="delete from list" class="bin"/>
             </span>
             <span ng-if="isPreShopping=='true'">
@@ -127,7 +127,7 @@
           </td>
           <td>
             <span ng-if="isTemplates=='true'">               
-              <img ng-click="editItem($index, 'i')" src="pencil.png" title="edit"/>
+              <img ng-click="editItem($index, 'i')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
               <img ng-click="removeItem($index, 'i')" src="bin.png" title="delete from list" class="bin"/>
             </span>
             <span ng-if="isPreShopping=='true'">
@@ -167,7 +167,7 @@
           <td>
             <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
             <span ng-if="isPreShopping=='true'">              
-              <img ng-click="editItem($index, 'n')" src="pencil.png" title="edit"/>
+              <img ng-click="editItem($index, 'n')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
               <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list""/>
             <span>
           </td>
@@ -194,7 +194,7 @@
           <td>
             <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
             <span ng-if="isPreShopping=='true'">               
-              <img ng-click="editItem($index, 'l')" src="pencil.png" title="edit"/>
+              <img ng-click="editItem($index, 'l')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
               <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list" class="bin"/>
             </span>
           </td>
@@ -208,12 +208,16 @@
     </div>
 
     <div class="footer">
-      <div>{{errortext}}</div>
-      <div id="errorTextMessage">Try to add the same item twice, and you will get an error message.</div>
+      <span ng-if="isShopping=='false'">
+        <span class="errorText">{{errortext}}</span>
+        <span id="errorTextMessage">Try to add the same item twice, and you will get an error message.</span>
+      </span>
       <button ng-click="finishShopping()" class="btn btn-primary footerBtn" title="Clear 'buy now' and save lists" ng-if="isShopping=='true'">Finished shopping</button>
+      <button ng-click="showPlainList()" class="btn btn-primary footerBtn" title="Show easy to copy 'buy now' list" ng-if="isPreShopping=='true'">Show easy copy list</button>
       <button ng-click="saveShoppingItems()" class="btn btn-primary footerBtn" title="Save 'buy now' 'buy later' lists" ng-if="isPreShopping=='true'">Save shopping lists</button>
       <button ng-click="saveTemplateItems()" class="btn btn-primary footerBtn" title="Save template lists" ng-if="isTemplates=='true'">Save template lists</button>
     </div>
+    <div id="listItemsPlain">{{listItemsPlain}}</div>
   </div> <!-- end app -->
 </div>
 
