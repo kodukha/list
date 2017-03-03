@@ -85,6 +85,11 @@ h3 {
     background-repeat: no-repeat;
 }
 
+.itemButtons {
+    display: inline-block;
+    width: 55px;
+}
+
 .step {
     height: 100px;
     background-position: left;

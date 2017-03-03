@@ -272,7 +272,8 @@ app.controller("myCtrl", function($scope) {
             $scope.isPreShopping="false";
             $scope.isShopping="false";
             $scope.isStartPage="false";
-            document.getElementById("headerTitle").innerHTML="Create or update templates";
+            //document.getElementById("headerTitle").innerHTML="Create or update templates";
+            document.getElementById("headerTitle").innerHTML="Створити або відредагувати шаблони";
             document.getElementById("buyNowItemActions").style.visibility="hidden";
             document.getElementById("buyLaterItemActions").style.visibility="hidden";
             document.getElementById("dailyItemActions").style.visibility="visible";
@@ -287,7 +288,8 @@ app.controller("myCtrl", function($scope) {
             $scope.isPreShopping="true";
             $scope.isShopping="false";
             $scope.isStartPage="false";
-            document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
+            //document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
+            document.getElementById("headerTitle").innerHTML="Створити списки покупок";
             document.getElementById("buyNowItemActions").style.visibility="visible";
             document.getElementById("buyLaterItemActions").style.visibility="visible";
             document.getElementById("dailyItemActions").style.visibility="hidden";
@@ -302,7 +304,8 @@ app.controller("myCtrl", function($scope) {
             $scope.isPreShopping="false";
             $scope.isShopping="true";
             $scope.isStartPage="false";
-            document.getElementById("headerTitle").innerHTML="The shopping. Check or postpone";
+            //document.getElementById("headerTitle").innerHTML="The shopping. Check or postpone";
+            document.getElementById("headerTitle").innerHTML="Шопінг. Вибрати куплене або відкласти покупку";
             document.getElementById("buyNowItemActions").style.visibility="hidden";
             document.getElementById("buyLaterItemActions").style.visibility="hidden";
             document.getElementById("dailyItemActions").style.visibility="hidden";
