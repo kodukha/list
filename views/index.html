@@ -23,201 +23,204 @@
         <li><a href="" ng-click="show('s')">Shopping</a></li>
       </ul>
     </nav>
-
-    <!-- DAILY -->
-    <div class="col-sm-2 daily list" id="dailyList">
-      <div ng-if="isShopping=='false'">
-        <h3> daily template</h3>
-        <div ng-if="itemsDaily.length == 0" > list is empty</div>
-      </div>
-      <table ng-if="isShopping=='false'">
-        <tr ng-repeat="x in itemsDaily">
-          <td>
-            <div class="item"> {{x}} </div>            
-          </td>
-          <td>
-            <span ng-if="isTemplates=='true'">   
-              <img ng-click="editItem($index, 'd')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
-              <img ng-click="removeItem($index, 'd')" src="bin.png" title="delete from list" class="bin"/>
-            </span>
-            <span ng-if="isPreShopping=='true'">
-              <img ng-click="moveItem($index, 'd','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'd','l')" src="clock.png" title="buy later" class='clock'/>
-            </span>
-          </td>
-        </tr>
-      </table>
-      <div id="dailyItemActions">
-        <input ng-model="addMeDaily">
-        <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('d')" class="btn  btn-primary">Delete all</button>
-      </div>
+    <div id="allContent1" ng-if="isStartPage=='true'">
+        <div class="step step1"> Create your own shopping templates - for each day, week, month and on occasion</div>
+        <div class="step step2"> Easily move items from shopping templates to your 'buy now' or 'buy later' pre-shopping lists </div>
+        <div class="step step3"> Do your shopping - check items in your list or move to 'buy later' list</div>
     </div>
-
-    <!-- WEEKLY -->
-    <div class="col-sm-2 weekly list" id="weeklyList">
-      <div ng-if="isShopping=='false'">
-        <h3> weekly template</h3>
-        <div ng-if="itemsWeekly.length == 0" > list is empty</div>
-      </div>
-      <table ng-if="isShopping=='false'">
-        <tr ng-repeat="x in itemsWeekly">
-          <td>
-            <div class="item"> {{x}} </div>
-          </td>
-          <td>
-            <span ng-if="isTemplates=='true'">               
-              <img ng-click="editItem($index, 'w')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
-              <img ng-click="removeItem($index, 'w')" src="bin.png" title="delete from list" class="bin"/>
-            </span>
-            <span ng-if="isPreShopping=='true'">
-              <img ng-click="moveItem($index, 'w','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'w','l')" src="clock.png" title="buy later" class='clock'/>
-            </span>
-          </td>
-        </tr>
-      </table>
-      <div id="weeklyItemActions">
-        <input ng-model="addMeWeekly">
-        <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('w')" class="btn  btn-primary">Delete all</button>
-      </div>
-    </div>
-
-    <!-- MONTHLY -->    
-    <div class="col-sm-2 monthly list" id="monthlyList">
-      <div ng-if="isShopping=='false'">
-        <h3> monthly template</h3>
-        <div ng-if="itemsMonthly.length == 0" > list is empty</div>
-      </div>
-      <table ng-if="isShopping=='false'">
-        <tr ng-repeat="x in itemsMonthly">
-          <td>
-            <div class="item"> {{x}} </div>
-          </td>
-          <td>
-            <span ng-if="isTemplates=='true'">               
-              <img ng-click="editItem($index, 'm')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
-              <img ng-click="removeItem($index, 'm')" src="bin.png" title="delete from list" class="bin"/>
-            </span>
-            <span ng-if="isPreShopping=='true'">
-              <img ng-click="moveItem($index, 'm','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'm','l')" src="clock.png" title="buy later" class='clock'/>
-            </span>
-          </td>
-        </tr>
-      </table>
-      <div id="monthlyItemActions">
-        <input ng-model="addMeMonthly">
-        <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('m')" class="btn  btn-primary">Delete all</button>
-      </div>
-    </div>
-
-    <!-- IRREGULAR -->
-    <div class="col-sm-2 irregular list" id="irregularList">
-      <div ng-if="isShopping=='false'">
-        <h3> on occasion template</h3>
-        <div ng-if="itemsIrregular.length == 0" > list is empty</div>
-      </div>
-      <table ng-if="isShopping=='false'">
-        <tr ng-repeat="x in itemsIrregular">
-          <td>
-            <div class="item"> {{x}} </div>
-          </td>
-          <td>
-            <span ng-if="isTemplates=='true'">               
-              <img ng-click="editItem($index, 'i')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
-              <img ng-click="removeItem($index, 'i')" src="bin.png" title="delete from list" class="bin"/>
-            </span>
-            <span ng-if="isPreShopping=='true'">
-              <img ng-click="moveItem($index, 'i','n')" src="cart.png" title="buy now" class='cart'/>
-              <img ng-click="moveItem($index, 'i','l')" src="clock.png" title="buy later" class='clock'/>
+    <div id="allContent2" ng-if="isStartPage=='false'">
+      <!-- DAILY -->
+      <div class="col-sm-2 daily list" id="dailyList">
+        <div ng-if="isShopping=='false'">
+          <h3> daily template</h3>
+          <div ng-if="itemsDaily.length == 0" > list is empty</div>
+        </div>
+        <table ng-if="isShopping=='false'">
+          <tr ng-repeat="x in itemsDaily">
+            <td>
+              <div class="item"> {{x}} </div>            
+            </td>
+            <td>
+              <span ng-if="isTemplates=='true'">   
+                <img ng-click="editItem($index, 'd')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
+                <img ng-click="removeItem($index, 'd')" src="bin.png" title="delete from list" class="bin"/>
               </span>
-          </td>
-        </tr>
-      </table>
-      <div id="irregularItemActions">
-        <input ng-model="addMeIrregular">
-        <button ng-click="addItem('i')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('i')" class="btn  btn-primary">Delete all</button>
+              <span ng-if="isPreShopping=='true'">
+                <img ng-click="moveItem($index, 'd','n')" src="cart.png" title="buy now" class='cart'/>
+                <img ng-click="moveItem($index, 'd','l')" src="clock.png" title="buy later" class='clock'/>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div id="dailyItemActions">
+          <input ng-model="addMeDaily">
+          <button ng-click="addItem('d')" class="btn  btn-primary">Add</button>
+          <button ng-click="clearItems('d')" class="btn  btn-primary">Delete all</button>
+        </div>
       </div>
-    </div>
 
-    <!-- BUY NOW -->
-    <div class="col-sm-2 buyNow list" id="buyNowList">
-      <div ng-if="isTemplates=='false'">
-        <h3>'buy now' list</h3>
-        <div ng-if="itemsBuyNow.length == 0" > list is empty</div>
+      <!-- WEEKLY -->
+      <div class="col-sm-2 weekly list" id="weeklyList">
+        <div ng-if="isShopping=='false'">
+          <h3> weekly template</h3>
+          <div ng-if="itemsWeekly.length == 0" > list is empty</div>
+        </div>
+        <table ng-if="isShopping=='false'">
+          <tr ng-repeat="x in itemsWeekly">
+            <td>
+              <div class="item"> {{x}} </div>
+            </td>
+            <td>
+              <span ng-if="isTemplates=='true'">               
+                <img ng-click="editItem($index, 'w')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
+                <img ng-click="removeItem($index, 'w')" src="bin.png" title="delete from list" class="bin"/>
+              </span>
+              <span ng-if="isPreShopping=='true'">
+                <img ng-click="moveItem($index, 'w','n')" src="cart.png" title="buy now" class='cart'/>
+                <img ng-click="moveItem($index, 'w','l')" src="clock.png" title="buy later" class='clock'/>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div id="weeklyItemActions">
+          <input ng-model="addMeWeekly">
+          <button ng-click="addItem('w')" class="btn  btn-primary">Add</button>
+          <button ng-click="clearItems('w')" class="btn  btn-primary">Delete all</button>
+        </div>
       </div>
-      <table ng-if="isTemplates=='false'">
-        <tr ng-repeat="x in itemsBuyNow">
-          <td>
-            <div ng-if="isPreShopping=='true'">
-              <div class="buyNowItem">{{x}}</div>
-            </div>
-            <div ng-if="isPreShopping=='false'">
-              <label class="customCheckbox">
-                <input type="checkbox" />
-                <p class="customCheckboxImg"></p>
-                {{x}}
-              </label>
-            </div>            
-          </td>
-          <td>
-            <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
-            <span ng-if="isPreShopping=='true'">              
-              <img ng-click="editItem($index, 'n')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
-              <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list""/>
-            <span>
-          </td>
-        </tr>
-      </table>
-      <div id="buyNowItemActions">
-        <input ng-model="addMeBuyNow">
-        <button ng-click="addItem('n')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('n')" class="btn  btn-primary">Delete all</button>
-      </div>
-    </div>
 
-    <!--BUY LATER -->
-    <div class="col-sm-2 buyLater list" id="buyLaterList">
-      <div ng-if="isTemplates=='false'">
-        <h3>'buy later' list</h3>
-        <div ng-if="itemsBuyLater.length == 0" > list is empty</div>
+      <!-- MONTHLY -->    
+      <div class="col-sm-2 monthly list" id="monthlyList">
+        <div ng-if="isShopping=='false'">
+          <h3> monthly template</h3>
+          <div ng-if="itemsMonthly.length == 0" > list is empty</div>
+        </div>
+        <table ng-if="isShopping=='false'">
+          <tr ng-repeat="x in itemsMonthly">
+            <td>
+              <div class="item"> {{x}} </div>
+            </td>
+            <td>
+              <span ng-if="isTemplates=='true'">               
+                <img ng-click="editItem($index, 'm')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
+                <img ng-click="removeItem($index, 'm')" src="bin.png" title="delete from list" class="bin"/>
+              </span>
+              <span ng-if="isPreShopping=='true'">
+                <img ng-click="moveItem($index, 'm','n')" src="cart.png" title="buy now" class='cart'/>
+                <img ng-click="moveItem($index, 'm','l')" src="clock.png" title="buy later" class='clock'/>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div id="monthlyItemActions">
+          <input ng-model="addMeMonthly">
+          <button ng-click="addItem('m')" class="btn  btn-primary">Add</button>
+          <button ng-click="clearItems('m')" class="btn  btn-primary">Delete all</button>
+        </div>
       </div>
-      <table ng-if="isTemplates=='false'">
-        <tr ng-repeat="x in itemsBuyLater">
-          <td>
-            {{x}}
-          </td>
-          <td>
-            <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
-            <span ng-if="isPreShopping=='true'">               
-              <img ng-click="editItem($index, 'l')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
-              <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list" class="bin"/>
-            </span>
-          </td>
-        </tr>
-      </table>
-      <div id="buyLaterItemActions">
-        <input ng-model="addMeBuyLater">
-        <button ng-click="addItem('l')" class="btn  btn-primary">Add</button>
-        <button ng-click="clearItems('l')" class="btn  btn-primary">Delete all</button>
-      </div>
-    </div>
 
-    <div class="footer">
-      <span ng-if="isShopping=='false'">
-        <span class="errorText">{{errortext}}</span>
-        <span id="errorTextMessage">Try to add the same item twice, and you will get an error message.</span>
-      </span>
-      <button ng-click="finishShopping()" class="btn btn-primary footerBtn" title="Clear 'buy now' and save lists" ng-if="isShopping=='true'">Finished shopping</button>
-      <button ng-click="showPlainList()" class="btn btn-primary footerBtn" title="Show easy to copy 'buy now' list" ng-if="isPreShopping=='true'">Show easy copy list</button>
-      <button ng-click="saveShoppingItems()" class="btn btn-primary footerBtn" title="Save 'buy now' 'buy later' lists" ng-if="isPreShopping=='true'">Save shopping lists</button>
-      <button ng-click="saveTemplateItems()" class="btn btn-primary footerBtn" title="Save template lists" ng-if="isTemplates=='true'">Save template lists</button>
-    </div>
-    <div id="listItemsPlain">{{listItemsPlain}}</div>
+      <!-- IRREGULAR -->
+      <div class="col-sm-2 irregular list" id="irregularList">
+        <div ng-if="isShopping=='false'">
+          <h3> on occasion template</h3>
+          <div ng-if="itemsIrregular.length == 0" > list is empty</div>
+        </div>
+        <table ng-if="isShopping=='false'">
+          <tr ng-repeat="x in itemsIrregular">
+            <td>
+              <div class="item"> {{x}} </div>
+            </td>
+            <td>
+              <span ng-if="isTemplates=='true'">               
+                <img ng-click="editItem($index, 'i')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
+                <img ng-click="removeItem($index, 'i')" src="bin.png" title="delete from list" class="bin"/>
+              </span>
+              <span ng-if="isPreShopping=='true'">
+                <img ng-click="moveItem($index, 'i','n')" src="cart.png" title="buy now" class='cart'/>
+                <img ng-click="moveItem($index, 'i','l')" src="clock.png" title="buy later" class='clock'/>
+                </span>
+            </td>
+          </tr>
+        </table>
+        <div id="irregularItemActions">
+          <input ng-model="addMeIrregular">
+          <button ng-click="addItem('i')" class="btn  btn-primary">Add</button>
+          <button ng-click="clearItems('i')" class="btn  btn-primary">Delete all</button>
+        </div>
+      </div>
+
+      <!-- BUY NOW -->
+      <div class="col-sm-2 buyNow list" id="buyNowList">
+        <div ng-if="isTemplates=='false'">
+          <h3>'buy now' list</h3>
+          <div ng-if="itemsBuyNow.length == 0" > list is empty</div>
+        </div>
+        <table ng-if="isTemplates=='false'">
+          <tr ng-repeat="x in itemsBuyNow">
+            <td>
+              <div ng-if="isPreShopping=='true'">
+                <div class="buyNowItem">{{x}}</div>
+              </div>
+              <div ng-if="isPreShopping=='false'">
+                <label class="customCheckbox">
+                  <input type="checkbox" />
+                  <p class="customCheckboxImg"></p>
+                  {{x}}
+                </label>
+              </div>            
+            </td>
+            <td>
+              <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="buy later"/>
+              <span ng-if="isPreShopping=='true'">              
+                <img ng-click="editItem($index, 'n')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
+                <img ng-click="removeItem($index, 'n')" src="bin.png" title="delete from list""/>
+              <span>
+            </td>
+          </tr>
+        </table>
+        <div id="buyNowItemActions">
+          <input ng-model="addMeBuyNow">
+          <button ng-click="addItem('n')" class="btn  btn-primary">Add</button>
+          <button ng-click="clearItems('n')" class="btn  btn-primary">Delete all</button>
+        </div>
+      </div>
+
+      <!--BUY LATER -->
+      <div class="col-sm-2 buyLater list" id="buyLaterList">
+        <div ng-if="isTemplates=='false'">
+          <h3>'buy later' list</h3>
+          <div ng-if="itemsBuyLater.length == 0" > list is empty</div>
+        </div>
+        <table ng-if="isTemplates=='false'">
+          <tr ng-repeat="x in itemsBuyLater">
+            <td>
+              {{x}}
+            </td>
+            <td>
+              <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="buy now" class='cart'/>
+              <span ng-if="isPreShopping=='true'">               
+                <img ng-click="editItem($index, 'l')" src="pencil.png" title="moves item to editbox, edit it and add back to list"/>
+                <img ng-click="removeItem($index, 'l')" src="bin.png" title="delete from list" class="bin"/>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div id="buyLaterItemActions">
+          <input ng-model="addMeBuyLater">
+          <button ng-click="addItem('l')" class="btn  btn-primary">Add</button>
+          <button ng-click="clearItems('l')" class="btn  btn-primary">Delete all</button>
+        </div>
+      </div>
+
+      <div class="footer">
+        <span ng-if="isShopping=='false'" class="errorText">{{errortext}}</span>
+        <span id="listItemsPlain">{{listItemsPlain}}</span>
+        <button ng-click="finishShopping()" class="btn btn-primary footerBtn" title="Clear 'buy now' and save lists" ng-if="isShopping=='true'">Finished shopping</button>
+        <button ng-click="showPlainList()" class="btn btn-primary footerBtn" title="Show easy to copy 'buy now' list" ng-if="isPreShopping=='true'">Show easy copy list</button>
+        <button ng-click="saveShoppingItems()" class="btn btn-primary footerBtn" title="Save 'buy now' 'buy later' lists" ng-if="isPreShopping=='true'">Save shopping lists</button>
+        <button ng-click="saveTemplateItems()" class="btn btn-primary footerBtn" title="Save template lists" ng-if="isTemplates=='true'">Save template lists</button>
+      </div>
+    </div> <!-- end content 2 -->
   </div> <!-- end app -->
 </div>
 

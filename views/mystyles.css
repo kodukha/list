@@ -44,6 +44,8 @@ h1 {
     vertical-align: middle;
 }
 
+.errorText {float: left;}
+
 .footerBtn {
     display: inline;
     float: right;
@@ -52,8 +54,10 @@ h1 {
 
 .footer {
     clear: both;
-    padding-top: 20px;
+    padding-top: 10px;
     background-color: #cff4ff;
+    height: 50px;
+    padding-left: 10px;
 }
 
 .list tr:hover {
@@ -66,10 +70,41 @@ h1 {
 
 .item {
     padding-right: 10px;
+    display: inline-block;
+    width: 150px;
 }
 
 h3 {
     color: #337ab7;
+}
+
+#allContent1 {
+    background-image: url("static/shopping.jpg");
+    height: 600px;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.step {
+    height: 100px;
+    background-position: left;
+    background-repeat: no-repeat;
+    font-size: 28px;
+    width: 700px;
+    padding-left: 110px;
+    padding-top: 10px;
+}
+
+.step1 {
+    background-image: url("static/1.png");
+}
+
+.step2 {
+    background-image: url("static/2.png");
+}
+
+.step3 {
+    background-image: url("static/3.png");
 }
 
 .customCheckbox {
@@ -103,4 +138,9 @@ h3 {
 .customCheckbox input[type=checkbox]:checked + .customCheckboxImg {
   background-position: 0 0;
   background-image: url("tick.png");
+}
+
+#dailyItemActions, #weeklyItemActions, #monthlyItemActions, #irregularItemActions, #buyNowItemActions, #buyLaterItemActions {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
