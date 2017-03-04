@@ -24,7 +24,8 @@ nav li a {
 }
 
 nav li a:hover {
-    background-color: #f6fb64;
+    background-color: #337ab7;
+    color: #ffffff;
 }
 
 .icon {
@@ -68,18 +69,33 @@ h1 {
     height: 25px;
 }
 
+.list {
+    padding-bottom: 20px;
+}
+
 .item {
     padding-right: 10px;
     display: inline-block;
     width: 150px;
 }
 
+.shoppingItem {
+    width: 180px;
+}
+
 h3 {
     color: #337ab7;
+    background-image: url("images/list.png");
+    background-position: left;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    padding-top: 5px;
+    height: 35px;
+    margin-top: 0px;
 }
 
 #allContent1 {
-    background-image: url("static/shopping.jpg");
+    background-image: url("images/shopping.jpg");
     height: 600px;
     background-position: right;
     background-repeat: no-repeat;
@@ -101,15 +117,15 @@ h3 {
 }
 
 .step1 {
-    background-image: url("static/1.png");
+    background-image: url("images/1.png");
 }
 
 .step2 {
-    background-image: url("static/2.png");
+    background-image: url("images/2.png");
 }
 
 .step3 {
-    background-image: url("static/3.png");
+    background-image: url("images/3.png");
 }
 
 .customCheckbox {
@@ -122,8 +138,8 @@ h3 {
   opacity: 0;
   overflow: hidden;
   clip: rect(0 0 0 0);
-  height: 25px;
-  width: 25px;
+  height: 23px;
+  width: 23px;
   padding: 0;
   border: 0;
   left: 0;
@@ -142,7 +158,7 @@ h3 {
 }
 .customCheckbox input[type=checkbox]:checked + .customCheckboxImg {
   background-position: 0 0;
-  background-image: url("tick.png");
+  background-image: url("images/tick.png");
 }
 
 #dailyItemActions, #weeklyItemActions, #monthlyItemActions, #irregularItemActions, #buyNowItemActions, #buyLaterItemActions {

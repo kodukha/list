@@ -14,7 +14,7 @@
 <body>
 <div class="container-fluid">
   <div class="row" ng-app="myShoppingList" ng-controller="myCtrl">
-    <img class="icon" src="flower.jpg" height="75px"/>
+    <img class="icon" src="images/flower.jpg" height="75px"/>
     <h1>
       <!--<div id="headerTitle">The best shopping planning tool</div>-->
       <div id="headerTitle">Найкраща програма-планувальник покупок</div>
@@ -43,7 +43,8 @@
           <!--<p>Do your shopping - check items in your list or move to 'buy later' list</p>-->
         </div>
     </div>
-    <div id="allContent2" ng-if="isStartPage=='false'">
+
+    <div id="allContent2">
       <!-- DAILY -->
       <div class="col-sm-2 daily list" id="dailyList">
         <div ng-if="isShopping=='false'">
@@ -57,12 +58,12 @@
             </td>
             <td>
               <span ng-if="isTemplates=='true'" class="itemButtons">   
-                <img ng-click="editItem($index, 'd')" src="pencil.png" title="перемістити в поле для редагування"/>
-                <img ng-click="removeItem($index, 'd')" src="bin.png" title="видалити" class="bin"/>
+                <img ng-click="editItem($index, 'd')" src="images/pencil.png" title="перемістити в поле для редагування"/>
+                <img ng-click="removeItem($index, 'd')" src="images/bin.png" title="видалити" class="bin"/>
               </span>
               <span ng-if="isPreShopping=='true'">
-                <img ng-click="moveItem($index, 'd','n')" src="cart.png" title="купити вже" class='cart'/>
-                <img ng-click="moveItem($index, 'd','l')" src="clock.png" title="купити потім" class='clock'/>
+                <img ng-click="moveItem($index, 'd','n')" src="images/cart.png" title="купити вже" class='cart'/>
+                <img ng-click="moveItem($index, 'd','l')" src="images/clock.png" title="купити потім" class='clock'/>
               </span>
             </td>
           </tr>
@@ -87,12 +88,12 @@
             </td>
             <td>
               <span ng-if="isTemplates=='true'">               
-                <img ng-click="editItem($index, 'w')" src="pencil.png" title="перемістити в поле для редагування"/>
-                <img ng-click="removeItem($index, 'w')" src="bin.png" title="видалити" class="bin"/>
+                <img ng-click="editItem($index, 'w')" src="images/pencil.png" title="перемістити в поле для редагування"/>
+                <img ng-click="removeItem($index, 'w')" src="images/bin.png" title="видалити" class="bin"/>
               </span>
               <span ng-if="isPreShopping=='true'">
-                <img ng-click="moveItem($index, 'w','n')" src="cart.png" title="купити вже" class='cart'/>
-                <img ng-click="moveItem($index, 'w','l')" src="clock.png" title="купити потім" class='clock'/>
+                <img ng-click="moveItem($index, 'w','n')" src="images/cart.png" title="купити вже" class='cart'/>
+                <img ng-click="moveItem($index, 'w','l')" src="images/clock.png" title="купити потім" class='clock'/>
               </span>
             </td>
           </tr>
@@ -117,12 +118,12 @@
             </td>
             <td>
               <span ng-if="isTemplates=='true'">               
-                <img ng-click="editItem($index, 'm')" src="pencil.png" title="перемістити в поле для редагування"/>
-                <img ng-click="removeItem($index, 'm')" src="bin.png" title="видалити" class="bin"/>
+                <img ng-click="editItem($index, 'm')" src="images/pencil.png" title="перемістити в поле для редагування"/>
+                <img ng-click="removeItem($index, 'm')" src="images/bin.png" title="видалити" class="bin"/>
               </span>
               <span ng-if="isPreShopping=='true'">
-                <img ng-click="moveItem($index, 'm','n')" src="cart.png" title="купити вже" class='cart'/>
-                <img ng-click="moveItem($index, 'm','l')" src="clock.png" title="купити потім" class='clock'/>
+                <img ng-click="moveItem($index, 'm','n')" src="images/cart.png" title="купити вже" class='cart'/>
+                <img ng-click="moveItem($index, 'm','l')" src="images/clock.png" title="купити потім" class='clock'/>
               </span>
             </td>
           </tr>
@@ -147,12 +148,12 @@
             </td>
             <td>
               <span ng-if="isTemplates=='true'">               
-                <img ng-click="editItem($index, 'i')" src="pencil.png" title="перемістити в поле для редагування"/>
-                <img ng-click="removeItem($index, 'i')" src="bin.png" title="видалити" class="bin"/>
+                <img ng-click="editItem($index, 'i')" src="images/pencil.png" title="перемістити в поле для редагування"/>
+                <img ng-click="removeItem($index, 'i')" src="images/bin.png" title="видалити" class="bin"/>
               </span>
               <span ng-if="isPreShopping=='true'">
-                <img ng-click="moveItem($index, 'i','n')" src="cart.png" title="купити вже" class='cart'/>
-                <img ng-click="moveItem($index, 'i','l')" src="clock.png" title="купити потім" class='clock'/>
+                <img ng-click="moveItem($index, 'i','n')" src="images/cart.png" title="купити вже" class='cart'/>
+                <img ng-click="moveItem($index, 'i','l')" src="images/clock.png" title="купити потім" class='clock'/>
                 </span>
             </td>
           </tr>
@@ -176,7 +177,7 @@
               <div ng-if="isPreShopping=='true'">
                 <div class="item">{{x}}</div>
               </div>
-              <div ng-if="isPreShopping=='false'" class="item">
+              <div ng-if="isPreShopping=='false'" class="item shoppingItem">
                 <label class="customCheckbox">
                   <input type="checkbox" />
                   <p class="customCheckboxImg"></p>
@@ -185,10 +186,10 @@
               </div>            
             </td>
             <td>
-              <img ng-click="moveItem($index, 'n','l')" src="clock.png" title="купити потім"/>
+              <img ng-click="moveItem($index, 'n','l')" src="images/clock.png" title="купити потім"/>
               <span ng-if="isPreShopping=='true'">              
-                <img ng-click="editItem($index, 'n')" src="pencil.png" title="перемістити в поле для редагування"/>
-                <img ng-click="removeItem($index, 'n')" src="bin.png" title="видалити""/>
+                <img ng-click="editItem($index, 'n')" src="images/pencil.png" title="перемістити в поле для редагування"/>
+                <img ng-click="removeItem($index, 'n')" src="images/bin.png" title="видалити""/>
               <span>
             </td>
           </tr>
@@ -212,10 +213,10 @@
               <div class="item"> {{x}} </div>
             </td>
             <td>
-              <img ng-click="moveItem($index, 'l','n')" src="cart.png" title="купити вже" class='cart'/>
+              <img ng-click="moveItem($index, 'l','n')" src="images/cart.png" title="купити вже" class='cart'/>
               <span ng-if="isPreShopping=='true'">               
-                <img ng-click="editItem($index, 'l')" src="pencil.png" title="перемістити в поле для редагування"/>
-                <img ng-click="removeItem($index, 'l')" src="bin.png" title="видалити" class="bin"/>
+                <img ng-click="editItem($index, 'l')" src="images/pencil.png" title="перемістити в поле для редагування"/>
+                <img ng-click="removeItem($index, 'l')" src="images/bin.png" title="видалити" class="bin"/>
               </span>
             </td>
           </tr>
@@ -245,6 +246,7 @@
 
 <script>
   var storage = window.localStorage;
+  document.getElementById("allContent2").style.display="none";
 </script>
 
 </body>

@@ -266,6 +266,7 @@ app.controller("myCtrl", function($scope) {
       }
     }
     $scope.show = function(listType) {
+        document.getElementById("allContent2").style.display="block";
         switch (listType){
           case 't': { // templates only
             $scope.isTemplates="true";
@@ -274,13 +275,17 @@ app.controller("myCtrl", function($scope) {
             $scope.isStartPage="false";
             //document.getElementById("headerTitle").innerHTML="Create or update templates";
             document.getElementById("headerTitle").innerHTML="Створити або відредагувати шаблони";
-            document.getElementById("buyNowItemActions").style.visibility="hidden";
-            document.getElementById("buyLaterItemActions").style.visibility="hidden";
-            document.getElementById("dailyItemActions").style.visibility="visible";
-            document.getElementById("weeklyItemActions").style.visibility="visible";
-            document.getElementById("monthlyItemActions").style.visibility="visible";
-            document.getElementById("irregularItemActions").style.visibility="visible";
-            document.getElementById("listItemsPlain").style.visibility="hidden";
+            document.getElementById("dailyItemActions").style.display="block";
+            document.getElementById("weeklyItemActions").style.display="block";
+            document.getElementById("monthlyItemActions").style.display="block";
+            document.getElementById("irregularItemActions").style.display="block";
+            document.getElementById("irregularList").style.display="block";
+            document.getElementById("monthlyList").style.display="block";
+            document.getElementById("weeklyList").style.display="block";
+            document.getElementById("dailyList").style.display="block";
+            document.getElementById("buyNowItemActions").style.display="none";
+            document.getElementById("buyLaterItemActions").style.display="none";
+            document.getElementById("listItemsPlain").style.display="none";
             break;
           }
           case 'p': { // pre-shopping
@@ -290,13 +295,17 @@ app.controller("myCtrl", function($scope) {
             $scope.isStartPage="false";
             //document.getElementById("headerTitle").innerHTML="Create pre-shopping lists";
             document.getElementById("headerTitle").innerHTML="Створити списки покупок";
-            document.getElementById("buyNowItemActions").style.visibility="visible";
-            document.getElementById("buyLaterItemActions").style.visibility="visible";
-            document.getElementById("dailyItemActions").style.visibility="hidden";
-            document.getElementById("weeklyItemActions").style.visibility="hidden";
-            document.getElementById("monthlyItemActions").style.visibility="hidden";
-            document.getElementById("irregularItemActions").style.visibility="hidden";
-            document.getElementById("listItemsPlain").style.visibility="hidden";
+            document.getElementById("buyNowItemActions").style.display="block";
+            document.getElementById("buyLaterItemActions").style.display="block";
+            document.getElementById("irregularList").style.display="block";
+            document.getElementById("monthlyList").style.display="block";
+            document.getElementById("weeklyList").style.display="block";
+            document.getElementById("dailyList").style.display="block";
+            document.getElementById("dailyItemActions").style.display="none";
+            document.getElementById("weeklyItemActions").style.display="none";
+            document.getElementById("monthlyItemActions").style.display="none";
+            document.getElementById("irregularItemActions").style.display="none";
+            document.getElementById("listItemsPlain").style.display="none";
             break;
           }
           case 's': { // shopping
@@ -306,13 +315,17 @@ app.controller("myCtrl", function($scope) {
             $scope.isStartPage="false";
             //document.getElementById("headerTitle").innerHTML="The shopping. Check or postpone";
             document.getElementById("headerTitle").innerHTML="Шопінг. Вибрати куплене або відкласти покупку";
-            document.getElementById("buyNowItemActions").style.visibility="hidden";
-            document.getElementById("buyLaterItemActions").style.visibility="hidden";
-            document.getElementById("dailyItemActions").style.visibility="hidden";
-            document.getElementById("weeklyItemActions").style.visibility="hidden";
-            document.getElementById("monthlyItemActions").style.visibility="hidden";
-            document.getElementById("irregularItemActions").style.visibility="hidden";
-            document.getElementById("listItemsPlain").style.visibility="hidden";
+            document.getElementById("buyNowItemActions").style.display="none";
+            document.getElementById("buyLaterItemActions").style.display="none";
+            document.getElementById("dailyItemActions").style.display="none";
+            document.getElementById("weeklyItemActions").style.display="none";
+            document.getElementById("monthlyItemActions").style.display="none";
+            document.getElementById("irregularItemActions").style.display="none";
+            document.getElementById("listItemsPlain").style.display="none";
+            document.getElementById("irregularList").style.display="none";
+            document.getElementById("monthlyList").style.display="none";
+            document.getElementById("weeklyList").style.display="none";
+            document.getElementById("dailyList").style.display="none";
             break;
           }
         }  
